@@ -1,0 +1,226 @@
+@import "tailwindcss";
+
+:root {
+  /* grayscale system */
+  --black: #000000;
+  --white: #ffffff;
+  --gray-950: #111111;
+  --gray-900: #1a1a1a;
+  --gray-800: #222222;
+  --gray-700: #333333;
+  --gray-600: #555555;
+  --gray-500: #777777;
+  --gray-400: #999999;
+  --gray-300: #cccccc;
+  --gray-200: #e5e5e5;
+  --gray-100: #f2f2f2;
+  --gray-50: #f7f7f7;
+
+  /* semantic tokens */
+  --bg: var(--white);
+  --bg-alt: var(--gray-50);
+  --surface: var(--gray-100);
+  --ink: var(--black);
+  --text-primary: var(--gray-950);
+  --text-secondary: var(--gray-600);
+  --text-muted: var(--gray-400);
+  --border: var(--gray-200);
+  --border-strong: var(--gray-300);
+
+  --invert-bg: var(--gray-950);
+  --invert-surface: var(--gray-900);
+  --invert-text: var(--gray-50);
+  --invert-text-muted: var(--gray-400);
+  --invert-border: rgba(255, 255, 255, 0.14);
+
+  /* motion */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-fast: 0.3s;
+  --dur-base: 0.6s;
+  --dur-slow: 0.9s;
+
+  /* layout */
+  --container-max: 1440px;
+  --gutter: clamp(1.25rem, 5vw, 4rem);
+  --section-y: clamp(4.5rem, 4vw + 2rem, 8rem);
+  /* shorter block used by the closing CTA band right before the footer */
+  --section-y-cta: clamp(2.5rem, 2vw + 1.5rem, 4rem);
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-bg-alt: var(--bg-alt);
+  --color-surface: var(--surface);
+  --color-ink: var(--ink);
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-muted: var(--text-muted);
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+  --color-invert-bg: var(--invert-bg);
+  --color-invert-surface: var(--invert-surface);
+  --color-invert-text: var(--invert-text);
+  --color-invert-text-muted: var(--invert-text-muted);
+
+  --font-sans: var(--font-body);
+  --font-display: var(--font-display);
+  --font-mono: var(--font-mono);
+}
+
+html {
+  background: var(--bg);
+}
+
+body {
+  background: var(--bg);
+  color: var(--text-primary);
+  font-family: var(--font-body), Arial, Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: var(--ink);
+  color: var(--white);
+}
+
+/* fluid type scale */
+:root {
+  --fs-display: clamp(2.75rem, 1.35rem + 6.2vw, 7.25rem);
+  --fs-h1: clamp(2.25rem, 1.35rem + 3.8vw, 4.5rem);
+  --fs-h2: clamp(1.75rem, 1.3rem + 2vw, 3rem);
+  --fs-h3: clamp(1.25rem, 1.05rem + 0.8vw, 1.75rem);
+  --fs-body-lg: clamp(1.05rem, 0.98rem + 0.3vw, 1.25rem);
+  --fs-body: 1rem;
+  --fs-small: 0.8125rem;
+  --fs-meta: 0.75rem;
+}
+
+.font-display {
+  font-family: var(--font-display), Arial, sans-serif;
+}
+.font-home-display {
+  font-family: var(--font-home-display), Arial, sans-serif;
+}
+.font-mono {
+  font-family: var(--font-mono), monospace;
+}
+
+.text-display {
+  font-size: var(--fs-display);
+  line-height: 0.98;
+  letter-spacing: -0.03em;
+}
+.text-h1 {
+  font-size: var(--fs-h1);
+  line-height: 1.02;
+  letter-spacing: -0.025em;
+}
+.text-h2 {
+  font-size: var(--fs-h2);
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+}
+.text-h3 {
+  font-size: var(--fs-h3);
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+.text-meta {
+  font-size: var(--fs-meta);
+  letter-spacing: 0.14em;
+  line-height: 1;
+}
+
+.container-edit {
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+/* reveal utility — animated by Reveal.tsx via IntersectionObserver */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity var(--dur-slow) var(--ease-out),
+    transform var(--dur-slow) var(--ease-out);
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* marquee */
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 32s linear infinite;
+}
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none;
+  }
+}
+
+/* hero line-mask reveal, plays once on load */
+.line-mask {
+  overflow: hidden;
+  display: block;
+}
+.line-mask > span {
+  display: block;
+  transform: translateY(112%);
+  animation: line-in var(--dur-slow) var(--ease-out) forwards;
+  animation-delay: var(--line-delay, 0ms);
+}
+@keyframes line-in {
+  to {
+    transform: translateY(0);
+  }
+}
+.fade-in {
+  opacity: 0;
+  animation: fade-up var(--dur-slow) var(--ease-out) forwards;
+  animation-delay: var(--line-delay, 0ms);
+}
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .line-mask > span,
+  .fade-in {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* thin, precise focus ring */
+:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 3px;
+}
