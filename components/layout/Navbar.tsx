@@ -1,13 +1,21 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { nav, site } from "@/lib/content";
 import { Container } from "@/components/ui/Container";
+import { ArrowUpRightIcon } from "@/components/ui/icons";
 
 export function Navbar() {
+  const pathname = usePathname();
+  const isHome = pathname === "/";
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+
+  // Home's hero sits on a dark photo background, so its nav text needs to
+  // stay light even before the scrolled (solid black bar) state kicks in.
+  const light = scrolled || isHome;
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -39,7 +47,7 @@ export function Navbar() {
             <Link
               href="/"
               className={`text-lg font-semibold tracking-tight transition-colors duration-500 ${
-                scrolled ? "text-white" : "text-text-primary"
+                light ? "text-white" : "text-text-primary"
               }`}
               onClick={() => setOpen(false)}
             >
@@ -51,9 +59,9 @@ export function Navbar() {
                 <Link
                   key={item.href}
                   href={item.href}
-                  className={`text-sm uppercase tracking-wide transition-colors duration-300 ${
-                    scrolled
-                      ? "text-gray-300 hover:text-white"
+                  className={`text-sm lowercase tracking-wide transition-colors duration-300 ${
+                    light
+                      ? "text-white hover:underline hover:underline-offset-4"
                       : "text-text-secondary hover:text-ink"
                   }`}
                 >
@@ -63,17 +71,25 @@ export function Navbar() {
             </div>
 
             <div className="hidden md:block">
-              <Link
-                href="/contact"
-                className={`group inline-flex items-center gap-2 border px-5 py-3 text-sm uppercase tracking-wide transition-colors duration-300 ${
-                  scrolled
-                    ? "border-white/30 text-white hover:border-white"
-                    : "border-border-strong text-text-primary hover:border-ink"
-                }`}
-              >
-                Let&apos;s Talk
-                <span className="transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1">
-                  &#8599;
+              <Link href="/contact" className="group inline-flex items-center gap-3">
+                <span
+                  className={`inline-flex items-center rounded-full border px-6 py-3 text-sm font-medium transition-colors duration-300 ${
+                    light
+                      ? "border-white/40 text-white group-hover:border-white"
+                      : "border-border-strong text-text-primary group-hover:border-ink"
+                  }`}
+                >
+                  Let&apos;s Talk
+                </span>
+                <span
+                  className={`inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full border transition-[transform,border-color,color] duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 ${
+                    light
+                      ? "border-white/40 text-white group-hover:border-white"
+                      : "border-border-strong text-text-primary group-hover:border-ink"
+                  }`}
+                  aria-hidden
+                >
+                  <ArrowUpRightIcon className="h-4 w-4" />
                 </span>
               </Link>
             </div>
@@ -87,12 +103,12 @@ export function Navbar() {
             >
               <span
                 className={`h-px w-6 transition-[transform,background-color] duration-300 ${
-                  open ? "translate-y-[3.5px] rotate-45 bg-white" : scrolled ? "bg-white" : "bg-ink"
+                  open ? "translate-y-[3.5px] rotate-45 bg-white" : light ? "bg-white" : "bg-ink"
                 }`}
               />
               <span
                 className={`h-px w-6 transition-[transform,background-color] duration-300 ${
-                  open ? "-translate-y-[3.5px] -rotate-45 bg-white" : scrolled ? "bg-white" : "bg-ink"
+                  open ? "-translate-y-[3.5px] -rotate-45 bg-white" : light ? "bg-white" : "bg-ink"
                 }`}
               />
             </button>
@@ -111,7 +127,7 @@ export function Navbar() {
               key={item.href}
               href={item.href}
               onClick={() => setOpen(false)}
-              className="text-h1 font-medium leading-none text-white"
+              className="text-h1 lowercase font-medium leading-none text-white"
               style={{
                 transitionDelay: open ? `${i * 60 + 120}ms` : "0ms",
               }}

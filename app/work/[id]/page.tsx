@@ -5,6 +5,7 @@ import { Container } from "@/components/ui/Container";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { Reveal } from "@/components/ui/Reveal";
 import { ArrowButton } from "@/components/ui/ArrowButton";
+import { ArrowUpRightIcon } from "@/components/ui/icons";
 import { ProjectVisual } from "@/components/work/ProjectVisual";
 import { projects } from "@/lib/content";
 
@@ -139,8 +140,8 @@ export default async function ProjectPage(props: PageProps<"/work/[id]">) {
                 {next.title}
               </p>
             </div>
-            <span className="font-mono text-meta uppercase transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1">
-              &#8599;
+            <span className="transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1">
+              <ArrowUpRightIcon className="h-5 w-5" />
             </span>
           </Link>
         </Container>

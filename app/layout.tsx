@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { display, body, mono, homeDisplay } from "@/lib/fonts";
+import { poppins } from "@/lib/fonts";
 import { site } from "@/lib/content";
 import { SmoothScroll } from "@/components/layout/SmoothScroll";
 import { Navbar } from "@/components/layout/Navbar";
@@ -31,10 +31,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html
-      lang="en"
-      className={`${display.variable} ${body.variable} ${mono.variable} ${homeDisplay.variable}`}
-    >
+    <html lang="en" className={poppins.variable}>
       <body className="min-h-full flex flex-col bg-bg text-text-primary">
         <SmoothScroll>
           <Navbar />

@@ -1,5 +1,5 @@
 import { Container } from "@/components/ui/Container";
-import { PillButton } from "./PillButton";
+import { PillButtonWithArrow } from "./PillButton";
 import { QuoteIcon, StarRating } from "./icons";
 import { testimonials, homeCopy } from "@/lib/content";
 
@@ -52,9 +52,9 @@ export function HomeTestimonials() {
             </h2>
             <p className="mt-4 max-w-xs text-text-secondary">{homeCopy.feedbackBody}</p>
             <div className="mt-6">
-              <PillButton href="/work" variant="solid">
+              <PillButtonWithArrow href="/work" variant="solid">
                 See All Feedback
-              </PillButton>
+              </PillButtonWithArrow>
             </div>
           </div>
 

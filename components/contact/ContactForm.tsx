@@ -3,6 +3,7 @@
 import { FormEvent, useState } from "react";
 import { contact } from "@/lib/content";
 import { validateContactPayload, type ContactPayload } from "@/lib/contact-validation";
+import { ArrowUpRightIcon } from "@/components/ui/icons";
 
 type Status = "idle" | "loading" | "success" | "error";
 
@@ -152,14 +153,14 @@ export function ContactForm() {
       <button
         type="submit"
         disabled={status === "loading"}
-        className="group mt-10 inline-flex items-center gap-3 bg-ink px-6 py-4 font-mono text-meta uppercase text-white transition-colors duration-300 hover:bg-gray-800 disabled:opacity-60"
+        className="group mt-10 inline-flex items-center gap-3 disabled:opacity-60"
       >
-        <span>{status === "loading" ? "Sending…" : "Send Message"}</span>
-        {status !== "loading" && (
-          <span className="inline-block transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1">
-            &#8599;
-          </span>
-        )}
+        <span className="inline-flex items-center rounded-full bg-ink px-7 py-3.5 text-sm font-medium text-white transition-colors duration-300 group-hover:bg-gray-800">
+          {status === "loading" ? "Sending…" : "Send Message"}
+        </span>
+        <span className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-ink text-white transition-[transform,background-color] duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:bg-gray-800">
+          <ArrowUpRightIcon className="h-4 w-4" />
+        </span>
       </button>
     </form>
   );

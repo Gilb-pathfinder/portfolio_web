@@ -1,5 +1,5 @@
 import { Container } from "@/components/ui/Container";
-import { PillButton } from "./PillButton";
+import { PillButtonWithArrow } from "./PillButton";
 import { experience, homeCopy, site } from "@/lib/content";
 
 export function HomeExperience() {
@@ -15,9 +15,9 @@ export function HomeExperience() {
               {homeCopy.experienceBody}
             </p>
             <div className="mt-6">
-              <PillButton href={`mailto:${site.email}?subject=CV%20request`} variant="solid" external>
+              <PillButtonWithArrow href={`mailto:${site.email}?subject=CV%20request`} variant="solid" external>
                 Download CV
-              </PillButton>
+              </PillButtonWithArrow>
             </div>
           </div>
 

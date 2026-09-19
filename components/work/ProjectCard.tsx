@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Project } from "@/lib/content";
 import { ProjectVisual } from "./ProjectVisual";
+import { ArrowUpRightIcon } from "@/components/ui/icons";
 
 export function ProjectCard({ project, index }: { project: Project; index: number }) {
   const num = String(index + 1).padStart(2, "0");
@@ -17,8 +18,8 @@ export function ProjectCard({ project, index }: { project: Project; index: numbe
             {project.category} &middot; {project.year}
           </p>
         </div>
-        <span className="mt-1 shrink-0 font-mono text-meta uppercase text-text-muted transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1">
-          &#8599;
+        <span className="mt-1.5 shrink-0 text-text-muted transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1">
+          <ArrowUpRightIcon className="h-4 w-4" />
         </span>
       </div>
     </Link>

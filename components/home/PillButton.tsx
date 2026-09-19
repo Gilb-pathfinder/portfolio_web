@@ -1,12 +1,15 @@
 import Link from "next/link";
 import { ReactNode } from "react";
+import { ArrowUpRightIcon } from "@/components/ui/icons";
 
-type Variant = "solid" | "outline" | "inverted";
+type Variant = "solid" | "outline" | "inverted" | "outlineLight";
 
 const variants: Record<Variant, string> = {
   solid: "bg-ink text-white hover:bg-gray-800",
   outline: "border border-border-strong text-text-primary hover:border-ink hover:bg-bg-alt",
   inverted: "bg-white text-ink hover:bg-gray-100",
+  // for use over a dark/photo background
+  outlineLight: "border border-white/40 text-white hover:border-white hover:bg-white/10",
 };
 
 export function PillButton({
@@ -48,10 +51,10 @@ export function CircleArrow({
 }) {
   return (
     <span
-      className={`inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full text-base transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 ${variants[variant]} ${className}`}
+      className={`inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 ${variants[variant]} ${className}`}
       aria-hidden
     >
-      &#8599;
+      <ArrowUpRightIcon className="h-4 w-4" />
     </span>
   );
 }
@@ -74,7 +77,7 @@ export function PillButtonWithArrow({
       >
         {children}
       </span>
-      <CircleArrow variant={variant === "inverted" ? "inverted" : "outline"} />
+      <CircleArrow variant={variant} />
     </>
   );
 

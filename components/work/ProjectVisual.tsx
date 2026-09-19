@@ -1,3 +1,5 @@
+import { ArrowUpRightIcon } from "@/components/ui/icons";
+
 export function ProjectVisual({
   title,
   index,
@@ -29,8 +31,8 @@ export function ProjectVisual({
       >
         {initials}
       </span>
-      <span className="absolute bottom-4 right-4 font-mono text-meta uppercase text-text-muted transition-all duration-500 group-hover:translate-x-0 group-hover:opacity-100 sm:translate-x-2 sm:opacity-0">
-        View project &#8599;
+      <span className="absolute bottom-4 right-4 inline-flex items-center gap-1.5 font-mono text-meta uppercase text-text-muted transition-all duration-500 group-hover:translate-x-0 group-hover:opacity-100 sm:translate-x-2 sm:opacity-0">
+        View project <ArrowUpRightIcon className="h-3.5 w-3.5" />
       </span>
     </div>
   );

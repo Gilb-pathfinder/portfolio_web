@@ -14,11 +14,19 @@ export function StarIcon({ className = "" }: { className?: string }) {
   );
 }
 
-export function StarRating({ count = 5, className = "" }: { count?: number; className?: string }) {
+export function StarRating({
+  count = 5,
+  className = "",
+  starClassName = "text-ink",
+}: {
+  count?: number;
+  className?: string;
+  starClassName?: string;
+}) {
   return (
     <div className={`flex items-center gap-1 ${className}`}>
       {Array.from({ length: count }).map((_, i) => (
-        <StarIcon key={i} className="h-4 w-4 text-ink" />
+        <StarIcon key={i} className={`h-4 w-4 ${starClassName}`} />
       ))}
     </div>
   );

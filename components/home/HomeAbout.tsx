@@ -1,5 +1,5 @@
 import { Container } from "@/components/ui/Container";
-import { PillButton } from "./PillButton";
+import { PillButtonWithArrow } from "./PillButton";
 import { GithubIcon, LinkedinIcon, InstagramIcon } from "./icons";
 import { homeAbout, site } from "@/lib/content";
 
@@ -46,9 +46,9 @@ export function HomeAbout() {
             </div>
 
             <div className="mt-8 flex flex-wrap items-center gap-8">
-              <PillButton href="/contact" variant="solid">
+              <PillButtonWithArrow href="/contact" variant="solid">
                 Hire Me
-              </PillButton>
+              </PillButtonWithArrow>
 
               <div className="flex items-center gap-4">
                 <span className="h-px w-10 bg-border-strong" aria-hidden />

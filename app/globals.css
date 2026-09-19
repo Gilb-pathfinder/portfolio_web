@@ -63,9 +63,7 @@
   --color-invert-text: var(--invert-text);
   --color-invert-text-muted: var(--invert-text-muted);
 
-  --font-sans: var(--font-body);
-  --font-display: var(--font-display);
-  --font-mono: var(--font-mono);
+  --font-sans: var(--font-poppins);
 }
 
 html {
@@ -75,7 +73,7 @@ html {
 body {
   background: var(--bg);
   color: var(--text-primary);
-  font-family: var(--font-body), Arial, Helvetica, sans-serif;
+  font-family: var(--font-poppins), Arial, Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
@@ -97,14 +95,10 @@ body {
   --fs-meta: 0.75rem;
 }
 
-.font-display {
-  font-family: var(--font-display), Arial, sans-serif;
-}
-.font-home-display {
-  font-family: var(--font-home-display), Arial, sans-serif;
-}
+.font-display,
+.font-home-display,
 .font-mono {
-  font-family: var(--font-mono), monospace;
+  font-family: var(--font-poppins), Arial, sans-serif;
 }
 
 .text-display {
