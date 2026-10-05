@@ -16,7 +16,7 @@ export function ProjectVisual({
 
   return (
     <div
-      className="relative aspect-[4/3] w-full overflow-hidden border border-border bg-bg-alt transition-colors duration-500 group-hover:border-ink"
+      className="relative aspect-[4/3] w-full overflow-hidden border border-border bg-bg-alt transition-colors duration-500 group-hover:border-accent"
       style={{
         backgroundImage:
           "repeating-linear-gradient(0deg, var(--border) 0, var(--border) 1px, transparent 1px, transparent 48px), repeating-linear-gradient(90deg, var(--border) 0, var(--border) 1px, transparent 1px, transparent 48px)",

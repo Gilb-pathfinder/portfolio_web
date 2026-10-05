@@ -1,236 +1,261 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 import { Container } from "@/components/ui/Container";
-import { PageHeader } from "@/components/ui/PageHeader";
-import { SectionLabel } from "@/components/ui/SectionLabel";
 import { Reveal } from "@/components/ui/Reveal";
-import { Marquee } from "@/components/ui/Marquee";
-import { Experience } from "@/components/sections/Experience";
-import { CTA } from "@/components/sections/CTA";
+import { DashCard } from "@/components/about/DashCard";
+import { ContactForm } from "@/components/contact/ContactForm";
+import { PhoneIcon, MailIcon, PinIcon, ArrowUpRightIcon } from "@/components/ui/icons";
 import { GithubIcon, LinkedinIcon, InstagramIcon } from "@/components/home/icons";
-import { about, approach, education, expertise, heroStats, techStack, site } from "@/lib/content";
-
-const socials = [
-  { label: "GitHub", href: site.social.github, Icon: GithubIcon },
-  { label: "LinkedIn", href: site.social.linkedin, Icon: LinkedinIcon },
-  { label: "Instagram", href: site.social.instagram, Icon: InstagramIcon },
-];
+import {
+  about,
+  education,
+  experience,
+  expertise,
+  heroStats,
+  projects,
+  site,
+  techStack,
+} from "@/lib/content";
 
 export const metadata: Metadata = {
   title: "About",
   description: `About ${site.name} — software developer, UI/UX designer and graphic designer.`,
 };
 
+const portfolioLinks = [
+  { label: "GitHub", href: site.social.github, Icon: GithubIcon },
+  { label: "LinkedIn", href: site.social.linkedin, Icon: LinkedinIcon },
+  { label: "Instagram", href: site.social.instagram, Icon: InstagramIcon },
+];
+
+const allSkills = Array.from(new Set(expertise.flatMap((e) => e.tools)));
+
 export default function AboutPage() {
   return (
-    <>
-      <PageHeader
-        index="—"
-        label="About"
-        title={`${site.role}, based in ${site.location}.`}
-        description="Software first — with the design instinct to know what a good interface should feel like before a line of code is written."
-      />
+    <section className="pt-28 md:pt-36" style={{ paddingBottom: "var(--section-y)" }}>
+      <Container>
+        <Reveal>
+          <p className="text-sm uppercase tracking-wide text-text-muted">About</p>
+          <h1 className="font-home-display text-h1 mt-3 max-w-2xl font-bold">
+            Software Developer, with design skills in UI/UX and graphic design.
+          </h1>
+        </Reveal>
 
-      {/* Profile — photo, contact details, portfolio links, quick stats */}
-      <section>
-        <Container>
-          <Reveal>
-            <div className="grid grid-cols-1 gap-10 border-t border-border py-12 md:grid-cols-12 md:items-center">
-              <div className="md:col-span-3">
-                <div className="relative mx-auto aspect-[4/5] w-full max-w-[220px] overflow-hidden rounded-2xl border border-border md:mx-0">
-                  <Image
-                    src="/images/my profile.jpg"
-                    alt={site.name}
-                    fill
-                    sizes="220px"
-                    className="object-cover"
-                  />
+        <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-12">
+          {/* ───────── Sidebar ───────── */}
+          <div className="space-y-6 md:col-span-4">
+            <Reveal>
+              <DashCard>
+                <div className="relative aspect-[4/3] w-full overflow-hidden rounded-xl">
+                  <Image src="/images/my profile.jpg" alt={site.name} fill sizes="320px" className="object-cover" />
                 </div>
-              </div>
+                <h3 className="font-home-display text-xl font-semibold text-text-primary mt-6">{site.name}</h3>
+                <p className="mt-1 text-text-muted">{site.role}</p>
+                <span className="mt-5 block h-px w-16 bg-accent" />
 
-              <div className="md:col-span-5">
-                <dl className="space-y-4">
-                  <div className="flex items-center justify-between gap-4 border-b border-border pb-4">
-                    <dt className="font-mono text-meta uppercase text-text-muted">Email</dt>
-                    <dd>
-                      <a href={`mailto:${site.email}`} className="hover:text-text-primary">
+                <ul className="mt-6 space-y-4">
+                  <li className="flex items-start gap-3">
+                    <PhoneIcon className="h-5 w-5 shrink-0 text-text-muted" />
+                    <div>
+                      <p className="text-sm text-text-muted">Phone</p>
+                      <a href={`tel:${site.phone.replace(/\s+/g, "")}`} className="text-text-primary">
+                        {site.phone}
+                      </a>
+                    </div>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <MailIcon className="h-5 w-5 shrink-0 text-text-muted" />
+                    <div>
+                      <p className="text-sm text-text-muted">Email</p>
+                      <a href={`mailto:${site.email}`} className="text-text-primary break-all">
                         {site.email}
                       </a>
-                    </dd>
-                  </div>
-                  <div className="flex items-center justify-between gap-4 border-b border-border pb-4">
-                    <dt className="font-mono text-meta uppercase text-text-muted">Phone</dt>
-                    <dd>
-                      <a href={`tel:${site.phone.replace(/\s+/g, "")}`}>{site.phone}</a>
-                    </dd>
-                  </div>
-                  <div className="flex items-center justify-between gap-4">
-                    <dt className="font-mono text-meta uppercase text-text-muted">Based in</dt>
-                    <dd>{site.address}</dd>
-                  </div>
-                </dl>
-
-                <div className="mt-6 flex items-center gap-3">
-                  {socials.map(({ label, href, Icon }) => (
-                    <a
-                      key={label}
-                      href={href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label={label}
-                      className="flex h-10 w-10 items-center justify-center rounded-full border border-border-strong text-text-secondary transition-colors duration-300 hover:border-ink hover:text-ink"
-                    >
-                      <Icon className="h-4 w-4" />
-                    </a>
-                  ))}
-                </div>
-              </div>
-
-              <div className="md:col-span-4">
-                <div className="grid grid-cols-3 gap-4">
-                  {heroStats.map((stat) => (
-                    <div key={stat.label} className="rounded-xl border border-border p-4 text-center">
-                      <p className="font-display text-h3">{stat.value}</p>
-                      <p className="mt-1 text-xs leading-snug text-text-muted">{stat.label}</p>
                     </div>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <PinIcon className="h-5 w-5 shrink-0 text-text-muted" />
+                    <div>
+                      <p className="text-sm text-text-muted">Based in</p>
+                      <p className="text-text-primary">{site.address}</p>
+                    </div>
+                  </li>
+                </ul>
+
+                <div className="mt-6 flex flex-wrap gap-3">
+                  <a
+                    href={`mailto:${site.email}?subject=CV%20request`}
+                    className="inline-flex items-center justify-center rounded-full bg-accent px-5 py-2.5 text-sm font-medium text-ink transition-colors hover:bg-white"
+                  >
+                    Request CV
+                  </a>
+                  <Link
+                    href="/contact"
+                    className="inline-flex items-center justify-center rounded-full border border-border-strong px-5 py-2.5 text-sm font-medium text-text-primary transition-colors hover:border-accent"
+                  >
+                    Contact Now
+                  </Link>
+                </div>
+              </DashCard>
+            </Reveal>
+
+            <Reveal delay={80}>
+              <DashCard title="Tech Stack">
+                <div className="flex flex-wrap gap-2">
+                  {techStack.map((t) => (
+                    <span key={t} className="rounded-full border border-border-strong px-3 py-1.5 text-xs text-text-secondary">
+                      {t}
+                    </span>
                   ))}
                 </div>
+              </DashCard>
+            </Reveal>
+
+            <Reveal delay={120}>
+              <DashCard title="Portfolio Links">
+                <ul className="space-y-3">
+                  {portfolioLinks.map(({ label, href, Icon }) => (
+                    <li key={label}>
+                      <a
+                        href={href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="group flex items-center justify-between rounded-xl border border-border px-4 py-3 transition-colors hover:border-accent"
+                      >
+                        <span className="flex items-center gap-3">
+                          <Icon className="h-4 w-4 text-text-muted" />
+                          <span className="text-text-primary">{label}</span>
+                        </span>
+                        <ArrowUpRightIcon className="h-3.5 w-3.5 text-text-muted transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-accent" />
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </DashCard>
+            </Reveal>
+          </div>
+
+          {/* ───────── Main ───────── */}
+          <div className="space-y-6 md:col-span-8">
+            <Reveal>
+              <div className="grid grid-cols-3 gap-4 sm:gap-6">
+                {heroStats.map((stat) => (
+                  <div key={stat.label} className="rounded-2xl border border-border bg-surface p-5 sm:p-7">
+                    <p className="font-home-display text-3xl font-bold text-text-primary sm:text-4xl">
+                      {stat.value}
+                    </p>
+                    <p className="mt-2 text-xs leading-snug text-text-muted sm:text-sm">{stat.label}</p>
+                  </div>
+                ))}
               </div>
-            </div>
-          </Reveal>
-        </Container>
-      </section>
+            </Reveal>
 
-      <Marquee items={techStack} />
-
-      {/* 01 — Bio */}
-      <section style={{ paddingBlock: "var(--section-y)" }}>
-        <Container>
-          <div className="grid grid-cols-1 gap-10 md:grid-cols-12">
-            <div className="md:col-span-4">
-              <Reveal>
-                <SectionLabel index="01" label="Biography" />
-              </Reveal>
-            </div>
-            <div className="md:col-span-8 space-y-6">
-              {about.bio.map((paragraph, i) => (
-                <Reveal key={i} delay={i * 100}>
-                  <p className="font-display text-h3 max-w-2xl">{paragraph}</p>
-                </Reveal>
-              ))}
-            </div>
-          </div>
-        </Container>
-      </section>
-
-      {/* 02 — Skills */}
-      <section className="border-t border-border" style={{ paddingBlock: "var(--section-y)" }}>
-        <Container>
-          <Reveal>
-            <SectionLabel index="02" label="Skills" />
-          </Reveal>
-          <div className="mt-10 grid grid-cols-1 gap-10 md:grid-cols-3 md:gap-8">
-            {expertise.map((item, i) => (
-              <Reveal key={item.index} delay={i * 100}>
-                <div className="border-t border-border pt-6">
-                  <p className="font-mono text-meta uppercase text-text-muted">
-                    {item.index}
-                  </p>
-                  <h3 className="font-display text-h3 mt-3">{item.title}</h3>
-                  <ul className="mt-5 flex flex-wrap gap-2">
-                    {item.tools.map((tool) => (
-                      <li
-                        key={tool}
-                        className="border border-border px-3 py-1.5 font-mono text-meta uppercase text-text-secondary"
-                      >
-                        {tool}
-                      </li>
-                    ))}
-                  </ul>
+            <Reveal delay={60}>
+              <DashCard title="Biography">
+                <div className="space-y-4">
+                  {about.bio.map((p, i) => (
+                    <p key={i} className="text-text-secondary">
+                      {p}
+                    </p>
+                  ))}
                 </div>
-              </Reveal>
-            ))}
-          </div>
-        </Container>
-      </section>
+              </DashCard>
+            </Reveal>
 
-      {/* 03 — Experience */}
-      <div className="border-t border-border">
-        <Experience index="03" />
-      </div>
-
-      {/* 04 — Education */}
-      <section className="border-t border-border" style={{ paddingBlock: "var(--section-y)" }}>
-        <Container>
-          <div className="grid grid-cols-1 gap-10 md:grid-cols-12">
-            <div className="md:col-span-4">
-              <Reveal>
-                <SectionLabel index="04" label="Education" />
-              </Reveal>
-            </div>
-            <div className="md:col-span-8">
-              <Reveal>
+            <Reveal delay={100}>
+              <DashCard title="Education">
                 {education.length > 0 ? (
-                  <ul>
+                  <ul className="space-y-7">
                     {education.map((entry) => (
-                      <li
-                        key={entry.title}
-                        className="border-t border-border py-6 last:border-b"
-                      >
-                        <p className="font-mono text-meta uppercase text-text-muted">
+                      <li key={entry.title}>
+                        <span className="inline-flex rounded-full border border-border bg-bg-alt px-3 py-1 text-xs text-text-muted">
                           {entry.period}
-                        </p>
-                        <h3 className="font-display text-h3 mt-2">
+                        </span>
+                        <h3 className="font-home-display text-lg font-medium text-text-primary mt-3">
                           {entry.title}
                         </h3>
-                        <p className="mt-1 text-text-secondary">
-                          {entry.institution}
-                        </p>
+                        <p className="text-text-muted">{entry.institution}</p>
                       </li>
                     ))}
                   </ul>
                 ) : (
-                  <p className="border border-dashed border-border-strong p-8 text-text-secondary">
-                    Education details to be added.
-                  </p>
+                  <p className="text-text-muted">Education details to be added.</p>
                 )}
-              </Reveal>
-            </div>
-          </div>
-        </Container>
-      </section>
+              </DashCard>
+            </Reveal>
 
-      {/* 05 — Approach */}
-      <section className="border-t border-border" style={{ paddingBlock: "var(--section-y)" }}>
-        <Container>
-          <div className="grid grid-cols-1 gap-10 md:grid-cols-12">
-            <div className="md:col-span-4">
-              <Reveal>
-                <SectionLabel index="05" label="Approach" />
-                <h2 className="font-display text-h1 mt-4 max-w-sm">
-                  How I work
-                </h2>
-              </Reveal>
-            </div>
-            <div className="md:col-span-8">
-              <ol>
-                {approach.map((line, i) => (
-                  <Reveal key={i} delay={i * 100}>
-                    <li className="grid grid-cols-[3rem_1fr] gap-4 border-t border-border py-6 last:border-b">
-                      <span className="font-mono text-meta uppercase text-text-muted">
-                        {String(i + 1).padStart(2, "0")}
+            <Reveal delay={140}>
+              <DashCard title="Experience">
+                <div className="space-y-5">
+                  {experience.map((entry) => (
+                    <div key={entry.period + entry.organisation} className="rounded-xl border border-border p-6">
+                      <div className="flex flex-wrap items-start justify-between gap-4 border-b border-border pb-5">
+                        <div>
+                          <h3 className="font-home-display text-lg font-medium text-text-primary">{entry.role}</h3>
+                          <p className="mt-1 text-text-muted">{entry.organisation}</p>
+                        </div>
+                        <span className="rounded-full border border-border bg-bg-alt px-3 py-1 text-xs text-text-muted">
+                          {entry.period}
+                        </span>
+                      </div>
+                      <p className="mt-5 text-text-secondary">{entry.description}</p>
+                    </div>
+                  ))}
+                </div>
+              </DashCard>
+            </Reveal>
+
+            <Reveal delay={180}>
+              <DashCard title="Skills">
+                <div className="flex flex-wrap gap-2">
+                  {allSkills.map((s) => (
+                    <span key={s} className="rounded-full border border-border-strong px-4 py-2 text-sm text-text-secondary">
+                      {s}
+                    </span>
+                  ))}
+                </div>
+              </DashCard>
+            </Reveal>
+
+            <Reveal delay={220}>
+              <DashCard title="Projects">
+                <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
+                  {projects.map((p) => (
+                    <Link
+                      key={p.id}
+                      href={`/work/${p.id}`}
+                      className="group rounded-xl border border-border p-5 transition-colors hover:border-accent"
+                    >
+                      <p className="text-xs uppercase tracking-wide text-text-muted">{p.category}</p>
+                      <h3 className="font-home-display text-base font-semibold text-text-primary mt-2">
+                        {p.title}
+                      </h3>
+                      <span className="mt-3 inline-flex items-center gap-1.5 text-sm text-text-secondary">
+                        View project
+                        <ArrowUpRightIcon className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                       </span>
-                      <p className="max-w-xl text-text-secondary">{line}</p>
-                    </li>
-                  </Reveal>
-                ))}
-              </ol>
-            </div>
-          </div>
-        </Container>
-      </section>
+                    </Link>
+                  ))}
+                </div>
+                <div className="mt-6 text-center">
+                  <Link
+                    href="/work"
+                    className="inline-flex items-center justify-center rounded-full border border-border-strong px-6 py-2.5 text-sm font-medium text-text-primary transition-colors hover:border-accent"
+                  >
+                    View More
+                  </Link>
+                </div>
+              </DashCard>
+            </Reveal>
 
-      <CTA index="06" />
-    </>
+            <Reveal delay={260}>
+              <DashCard title="Get In Touch">
+                <ContactForm />
+              </DashCard>
+            </Reveal>
+          </div>
+        </div>
+      </Container>
+    </section>
   );
 }

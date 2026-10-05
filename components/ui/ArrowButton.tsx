@@ -5,14 +5,14 @@ import { ArrowUpRightIcon } from "./icons";
 type Variant = "solid" | "outline" | "text";
 
 const pillStyles: Record<Variant, string> = {
-  solid: "bg-ink text-white group-hover:bg-gray-800",
-  outline: "border border-border-strong text-text-primary group-hover:border-ink",
+  solid: "bg-accent text-ink group-hover:bg-white",
+  outline: "border border-border-strong text-text-primary group-hover:border-accent",
   text: "",
 };
 
 const circleStyles: Record<Variant, string> = {
-  solid: "bg-ink text-white group-hover:bg-gray-800",
-  outline: "border border-border-strong text-text-primary group-hover:border-ink",
+  solid: "bg-accent text-ink group-hover:bg-white",
+  outline: "border border-border-strong text-text-primary group-hover:border-accent",
   text: "",
 };
 
@@ -33,7 +33,7 @@ export function ArrowButton({
   if (variant === "text") {
     const content = (
       <>
-        <span className="border-b border-transparent pb-1 transition-colors duration-300 group-hover:border-ink">
+        <span className="border-b border-transparent pb-1 transition-colors duration-300 group-hover:border-accent">
           {children}
         </span>
         <span className="inline-block transition-transform duration-300 ease-out group-hover:translate-x-1 group-hover:-translate-y-1">

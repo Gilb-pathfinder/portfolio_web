@@ -1,46 +1,45 @@
 @import "tailwindcss";
 
 :root {
-  /* Bugufi Digital's own brand palette (styles/bugufi.css, styles/template.css
-     in the bugufidigital reference project) — reused here for brand
-     consistency between the company site and this personal portfolio. */
+  /* Dark, monochrome theme — same card-on-dark-page structure as
+     bugufidigital (styles/bugufi.css, styles/template.css) and the
+     pixelency "about" reference, but strictly black / white / grey:
+     no lime, no yellow. */
   --bf-dark: #050505;
   --bf-dark-two: #111111;
-  --bf-lime: #c4f041;
-  --bf-yellow: #f0f52d;
-  --bf-olive: #72745f;
+  --bf-dark-three: #16171a;
   --bf-light: #fcfcfd;
-  --bf-bg: #f8fafc;
-  --bf-secondary: #555555;
+  --bf-secondary: #9a9a9a;
 
-  /* neutral ramp, anchored to the brand's dark/light endpoints */
-  --black: var(--bf-dark);
-  --white: var(--bf-light);
+  --black: #050505;
+  --white: #fcfcfd;
+
+  /* neutral ramp, light end used for text/borders on the dark page */
   --gray-950: #050505;
   --gray-900: #111111;
   --gray-800: #16171a;
-  --gray-700: #3a3a3a;
-  --gray-600: #555555;
-  --gray-500: #767676;
+  --gray-700: #2a2a2a;
+  --gray-600: #3f3f3f;
+  --gray-500: #6b6b6b;
   --gray-400: #9a9a9a;
   --gray-300: #c7c9cc;
   --gray-200: #e4e7eb;
   --gray-100: #eef1f5;
   --gray-50: #f8fafc;
 
-  /* semantic tokens */
-  --bg: var(--bf-bg);
-  --bg-alt: var(--gray-100);
-  --surface: var(--gray-100);
-  --ink: var(--bf-dark);
-  --accent: var(--bf-lime);
-  --accent-2: var(--bf-yellow);
-  --accent-soft: #eef7d9;
-  --text-primary: #0a0a0a;
-  --text-secondary: var(--bf-secondary);
-  --text-muted: #8a8a8a;
-  --border: var(--gray-200);
-  --border-strong: var(--gray-300);
+  /* semantic tokens — the whole site is dark by default now */
+  --bg: var(--bf-dark);
+  --bg-alt: var(--bf-dark-two);
+  --surface: var(--bf-dark-three);
+  --ink: var(--black);
+  --accent: #f2f2f2;
+  --accent-2: #ffffff;
+  --accent-soft: rgba(255, 255, 255, 0.08);
+  --text-primary: var(--bf-light);
+  --text-secondary: rgba(252, 252, 253, 0.68);
+  --text-muted: rgba(252, 252, 253, 0.48);
+  --border: rgba(255, 255, 255, 0.12);
+  --border-strong: rgba(255, 255, 255, 0.22);
 
   --invert-bg: var(--bf-dark);
   --invert-surface: var(--bf-dark-two);
@@ -104,8 +103,8 @@ body {
 }
 
 ::selection {
-  background: var(--ink);
-  color: var(--white);
+  background: var(--accent);
+  color: var(--ink);
 }
 
 /* fluid type scale */
@@ -259,6 +258,6 @@ body {
 
 /* thin, precise focus ring */
 :focus-visible {
-  outline: 2px solid var(--ink);
+  outline: 2px solid var(--accent);
   outline-offset: 3px;
 }

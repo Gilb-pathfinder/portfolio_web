@@ -43,7 +43,7 @@ export function HomeProjectCard({ project }: { project: Project }) {
         </ul>
         <Link
           href={`/work/${project.id}`}
-          className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-text-primary underline decoration-border-strong underline-offset-4 hover:decoration-ink"
+          className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-text-primary underline decoration-border-strong underline-offset-4 hover:decoration-accent"
         >
           View project
         </Link>

@@ -4,6 +4,7 @@ import { HomeExpertise } from "@/components/home/HomeExpertise";
 import { HomeProjects } from "@/components/home/HomeProjects";
 import { HomeExperience } from "@/components/home/HomeExperience";
 import { HomeTestimonials } from "@/components/home/HomeTestimonials";
+import { FAQ } from "@/components/sections/FAQ";
 import { HomeCTA } from "@/components/home/HomeCTA";
 
 export default function Home() {
@@ -15,6 +16,7 @@ export default function Home() {
       <HomeProjects />
       <HomeExperience />
       <HomeTestimonials />
+      <FAQ className="border-t border-border" />
       <HomeCTA />
     </>
   );

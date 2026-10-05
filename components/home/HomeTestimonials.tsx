@@ -13,27 +13,20 @@ function TestimonialCard({
   title: string;
 }) {
   return (
-    <div className="rounded-2xl p-8" style={{ background: "var(--gray-100)" }}>
-      <span
-        className="flex h-10 w-10 items-center justify-center rounded-full text-white"
-        style={{ background: "var(--gray-900)" }}
-      >
+    <div className="rounded-2xl border border-border bg-surface p-8">
+      <span className="flex h-10 w-10 items-center justify-center rounded-full bg-accent text-ink">
         <QuoteIcon className="h-4 w-4" />
       </span>
       <p className="mt-5 text-text-secondary">{quote}</p>
       <div className="mt-6 flex items-center justify-between">
         <div className="flex items-center gap-3">
-          <span
-            className="h-10 w-10 rounded-full"
-            style={{ background: "var(--gray-300)" }}
-            aria-hidden
-          />
+          <span className="h-10 w-10 rounded-full bg-white/10" aria-hidden />
           <div>
             <p className="font-medium text-text-primary">{name}</p>
             <p className="text-sm text-text-muted">{title}</p>
           </div>
         </div>
-        <StarRating />
+        <StarRating starClassName="text-accent" />
       </div>
     </div>
   );

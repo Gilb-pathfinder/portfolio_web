@@ -5,10 +5,10 @@ import { ArrowUpRightIcon } from "@/components/ui/icons";
 type Variant = "solid" | "outline" | "inverted" | "outlineLight" | "accent";
 
 const variants: Record<Variant, string> = {
-  solid: "bg-ink text-white hover:bg-gray-800",
-  outline: "border border-border-strong text-text-primary hover:border-ink hover:bg-bg-alt",
-  inverted: "bg-white text-ink hover:bg-gray-100",
-  // for use over a dark/photo background
+  // the whole site is dark now, so the "primary" fill is light-on-dark
+  solid: "bg-accent text-ink hover:bg-accent-2",
+  outline: "border border-border-strong text-text-primary hover:border-accent hover:bg-white/5",
+  inverted: "bg-white text-ink hover:bg-gray-200",
   outlineLight: "border border-white/40 text-white hover:border-white hover:bg-white/10",
   accent: "bg-accent text-ink hover:bg-accent-2",
 };

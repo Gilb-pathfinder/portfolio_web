@@ -81,16 +81,15 @@ export type HomeExpertiseItem = {
   tools: string[];
 };
 
-// Kept in the original's order (Graphic Design first) to match the source
-// design exactly. lib/content.ts `expertise` (used on /about) leads with
-// Software Development per the site's positioning strategy — the two
-// intentionally differ; see conversation notes.
+// Software Development leads everywhere on the site — it's the primary
+// identity, with UI/UX and Graphic Design as the design skills that set
+// that software work apart.
 export const homeExpertise: HomeExpertiseItem[] = [
   {
     index: "01",
-    title: "Graphic Design",
+    title: "Software Development",
     tagline: "A simple, results-driven process for bringing your vision to life.",
-    tools: ["Photoshop", "Illustrator", "InDesign"],
+    tools: ["JavaScript", "React.js", "Next.js", "Python", "AI Integration"],
   },
   {
     index: "02",
@@ -100,9 +99,9 @@ export const homeExpertise: HomeExpertiseItem[] = [
   },
   {
     index: "03",
-    title: "Software Development",
+    title: "Graphic Design",
     tagline: "A simple, results-driven process for bringing your vision to life.",
-    tools: ["JavaScript", "React.js", "Next.js", "Python", "AI Integration"],
+    tools: ["Photoshop", "Illustrator", "InDesign"],
   },
 ];
 
@@ -134,13 +133,6 @@ export type Project = {
   tech: string[];
   links?: { live?: string; github?: string };
 };
-
-export const projectFilters: { label: string; value: "all" | ProjectGroup }[] = [
-  { label: "All", value: "all" },
-  { label: "Software", value: "software" },
-  { label: "UI/UX", value: "uiux" },
-  { label: "Graphic Design", value: "graphic" },
-];
 
 export const projects: Project[] = [
   {
@@ -216,6 +208,25 @@ export const about = {
   ],
 };
 
+export const faqs = [
+  {
+    q: "What do you actually do?",
+    a: "I'm a software developer — I build full-stack applications with JavaScript, React and Next.js. I also design, so the interfaces I ship are considered, not just functional.",
+  },
+  {
+    q: "What technologies do you work with?",
+    a: `Mainly ${techStack.slice(0, 5).join(", ")} — plus ${techStack.slice(5).join(", ")} depending on the project.`,
+  },
+  {
+    q: "Do you take on freelance or contract work?",
+    a: "Yes. I'm open to freelance projects and contract work — message me on WhatsApp or email with a short brief and I'll get back to you.",
+  },
+  {
+    q: "Where are you based?",
+    a: "Kigali, Rwanda. I work remotely with clients anywhere.",
+  },
+];
+
 export const approach = [
   "Start from the problem, not the interface — most of the design and engineering decisions on a project fall out naturally once the problem is actually understood.",
   "Build in a way that a designer would recognise as considered and a developer would recognise as sound. Neither should be sacrificed for the other.",
@@ -242,6 +253,7 @@ export const contact = {
     "Brand / Graphic Design",
     "Other",
   ],
+  budgets: ["Free Consultation", "< $500", "$500 – $2k", "$2k+"],
 };
 
 export type ExperienceEntry = {

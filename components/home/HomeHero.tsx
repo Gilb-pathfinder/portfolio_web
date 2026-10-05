@@ -6,12 +6,11 @@ import { heroStats, roles, hero } from "@/lib/content";
 
 const heroBackground = {
   backgroundImage: [
-    "radial-gradient(55% 65% at 82% 42%, rgba(196,240,65,0.28) 0%, rgba(196,240,65,0) 62%)",
-    "radial-gradient(40% 45% at 96% 92%, rgba(240,245,45,0.16) 0%, rgba(240,245,45,0) 65%)",
-    "radial-gradient(45% 55% at 8% 10%, rgba(240,245,45,0.1) 0%, rgba(240,245,45,0) 60%)",
-    "radial-gradient(70% 60% at 20% 105%, rgba(114,116,95,0.5) 0%, rgba(114,116,95,0) 62%)",
-    "radial-gradient(35% 40% at 55% -5%, rgba(46,196,142,0.14) 0%, rgba(46,196,142,0) 70%)",
-    "linear-gradient(135deg, #050505 0%, #0a0f08 38%, #10160c 62%, #070806 100%)",
+    "radial-gradient(55% 65% at 82% 42%, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 62%)",
+    "radial-gradient(40% 45% at 96% 92%, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0) 65%)",
+    "radial-gradient(45% 55% at 8% 10%, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0) 60%)",
+    "radial-gradient(70% 60% at 20% 105%, rgba(255,255,255,0.07) 0%, rgba(255,255,255,0) 62%)",
+    "linear-gradient(135deg, #050505 0%, #0a0a0a 38%, #0d0d0d 62%, #070707 100%)",
   ].join(", "),
 };
 
@@ -47,7 +46,7 @@ export function HomeHero() {
                 style={{
                   lineHeight: 1.02,
                   letterSpacing: "-0.03em",
-                  backgroundImage: "linear-gradient(100deg, #fcfcfd 0%, #fcfcfd 45%, #c4f041 82%, #f0f52d 100%)",
+                  backgroundImage: "linear-gradient(100deg, #fcfcfd 0%, #fcfcfd 55%, #9a9a9a 100%)",
                   WebkitBackgroundClip: "text",
                   backgroundClip: "text",
                   WebkitTextFillColor: "transparent",

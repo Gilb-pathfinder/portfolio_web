@@ -18,7 +18,7 @@ export function HomeExpertise() {
           {homeExpertise.map((item) => (
             <div
               key={item.index}
-              className="group grid grid-cols-1 items-center gap-4 border-b border-border px-6 py-8 transition-colors duration-300 hover:bg-ink sm:grid-cols-12 sm:px-8"
+              className="group grid grid-cols-1 items-center gap-4 border-b border-border px-6 py-8 transition-colors duration-300 hover:bg-white/[0.06] sm:grid-cols-12 sm:px-8"
             >
               <div className="sm:col-span-4">
                 <p className="font-home-display text-h3 font-medium text-text-primary transition-colors duration-300 group-hover:text-white">

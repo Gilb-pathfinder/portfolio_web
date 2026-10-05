@@ -4,6 +4,7 @@ import { Reveal } from "@/components/ui/Reveal";
 import { CircleBadge } from "@/components/ui/CircleBadge";
 import { PhoneIcon, MailIcon } from "@/components/ui/icons";
 import { ContactForm } from "@/components/contact/ContactForm";
+import { FAQ } from "@/components/sections/FAQ";
 import { site, whatsappLink, testimonials } from "@/lib/content";
 
 export const metadata: Metadata = {
@@ -71,7 +72,7 @@ export default function ContactPage() {
           <div className="mx-auto mt-14 grid max-w-3xl grid-cols-1 gap-6 sm:grid-cols-2">
             {helpCards.map((card, i) => (
               <Reveal key={card.title} delay={i * 100}>
-                <div className="h-full rounded-2xl border border-border bg-bg p-8 shadow-sm">
+                <div className="h-full rounded-2xl border border-border bg-surface p-8">
                   <span className="flex h-14 w-14 items-center justify-center rounded-2xl bg-accent">
                     <card.Icon className="h-6 w-6 text-ink" />
                   </span>
@@ -81,7 +82,7 @@ export default function ContactPage() {
                     href={card.href}
                     target={card.external ? "_blank" : undefined}
                     rel={card.external ? "noopener noreferrer" : undefined}
-                    className="mt-5 inline-block font-semibold text-text-primary underline decoration-border-strong underline-offset-4 hover:decoration-ink"
+                    className="mt-5 inline-block font-semibold text-text-primary underline decoration-border-strong underline-offset-4 hover:decoration-accent"
                   >
                     {card.link}
                   </a>
@@ -131,11 +132,13 @@ export default function ContactPage() {
             </div>
 
             <div className="md:col-span-7">
-              <ContactForm invert />
+              <ContactForm />
             </div>
           </div>
         </Container>
       </section>
+
+      <FAQ />
     </>
   );
 }

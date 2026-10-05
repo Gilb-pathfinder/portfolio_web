@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 import { PillButtonWithArrow } from "./PillButton";
 import { GithubIcon, LinkedinIcon, InstagramIcon } from "./icons";
@@ -11,21 +12,17 @@ const socials = [
 
 export function HomeAbout() {
   return (
-    <section id="about" style={{ paddingBlock: "var(--section-y)" }}>
+    <section id="about" className="border-t border-border" style={{ paddingBlock: "var(--section-y)" }}>
       <Container>
         <div className="grid grid-cols-1 gap-12 md:grid-cols-12 md:gap-10">
           <div className="flex justify-center md:col-span-4 md:justify-start">
             <div className="relative h-56 w-56 sm:h-64 sm:w-64">
+              <div className="relative h-full w-full overflow-hidden rounded-full border border-border-strong">
+                <Image src="/images/my profile.jpg" alt={site.name} fill sizes="256px" className="object-cover" />
+              </div>
               <div
-                className="h-full w-full rounded-full border-2"
-                style={{ background: "var(--gray-100)", borderColor: "var(--gray-400)" }}
-              />
-              <div
-                className="absolute -bottom-4 -right-4 flex h-24 w-24 items-center justify-center p-4 text-center text-xs font-medium leading-tight text-white"
-                style={{
-                  background: "var(--gray-900)",
-                  borderRadius: "62% 38% 55% 45% / 48% 42% 58% 52%",
-                }}
+                className="absolute -bottom-4 -right-4 flex h-24 w-24 items-center justify-center bg-accent p-4 text-center text-xs font-medium leading-tight text-ink"
+                style={{ borderRadius: "62% 38% 55% 45% / 48% 42% 58% 52%" }}
               >
                 {homeAbout.badge}
               </div>
@@ -61,7 +58,7 @@ export function HomeAbout() {
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label={label}
-                      className="flex h-9 w-9 items-center justify-center rounded-full border border-border-strong text-text-secondary transition-colors duration-300 hover:border-ink hover:text-ink"
+                      className="flex h-9 w-9 items-center justify-center rounded-full border border-border-strong text-text-secondary transition-colors duration-300 hover:border-accent hover:text-accent"
                     >
                       <Icon className="h-4 w-4" />
                     </a>
