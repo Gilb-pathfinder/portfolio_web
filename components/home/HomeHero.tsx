@@ -1,6 +1,6 @@
 import { Container } from "@/components/ui/Container";
 import { Marquee } from "@/components/ui/Marquee";
-import { PillButtonWithArrow } from "./PillButton";
+import { PillButton } from "./PillButton";
 import { HeroCarousel } from "./HeroCarousel";
 import { heroStats, roles, hero } from "@/lib/content";
 
@@ -58,12 +58,12 @@ export function HomeHero() {
               <p className="mt-5 max-w-md text-lg text-white/75">{hero.description}</p>
 
               <div className="mt-9 flex flex-wrap items-center gap-4">
-                <PillButtonWithArrow href="#work" variant="accent">
+                <PillButton href="#work" variant="accent">
                   Get Started
-                </PillButtonWithArrow>
-                <PillButtonWithArrow href="#work" variant="outlineLight">
+                </PillButton>
+                <PillButton href="#work" variant="outlineLight">
                   View Projects
-                </PillButtonWithArrow>
+                </PillButton>
               </div>
 
               <div className="mt-12 max-w-md border-t border-white/10 pt-6">
