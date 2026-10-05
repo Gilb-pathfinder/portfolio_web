@@ -10,11 +10,20 @@ const INTERVAL = 4200;
 
 type Slide =
   | { kind: "profile"; title: string; caption: string; href: string }
-  | { kind: "project"; id: string; title: string; tech: string[]; href: string };
+  | { kind: "project"; id: string; title: string; tech: string[]; href: string; image?: string };
 
 const slides: Slide[] = [
   { kind: "profile", title: site.name, caption: "Software Developer", href: "/about" },
-  ...projects.map((p): Slide => ({ kind: "project", id: p.id, title: p.title, tech: p.tech, href: `/work/${p.id}` })),
+  ...projects.map(
+    (p): Slide => ({
+      kind: "project",
+      id: p.id,
+      title: p.title,
+      tech: p.tech,
+      href: `/work/${p.id}`,
+      image: p.image?.card,
+    })
+  ),
 ];
 
 /** Where a card sits relative to the active one: 0 = front, ±1 = tilted neighbours. */
@@ -98,6 +107,15 @@ export function HeroCarousel() {
                   className="object-cover"
                 />
               ) : (
+                slide.image ? (
+                  <Image
+                    src={slide.image}
+                    alt={`${slide.title} screenshot`}
+                    fill
+                    sizes="290px"
+                    className="object-cover object-top"
+                  />
+                ) : (
                 <>
                   <div
                     className="absolute inset-0 opacity-[0.08]"
@@ -113,6 +131,7 @@ export function HeroCarousel() {
                     {initialsOf(slide.title)}
                   </span>
                 </>
+                )
               )}
 
               <div className="absolute inset-0 bg-gradient-to-b from-black/15 via-transparent to-black/90" />

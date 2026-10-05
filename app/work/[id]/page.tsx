@@ -65,7 +65,7 @@ export default async function ProjectPage(props: PageProps<"/work/[id]">) {
 
           <Reveal delay={100}>
             <div className="mt-12">
-              <ProjectVisual title={project.title} index={String(index + 1).padStart(2, "0")} />
+              <ProjectVisual title={project.title} index={String(index + 1).padStart(2, "0")} image={project.image?.full} />
             </div>
           </Reveal>
         </Container>

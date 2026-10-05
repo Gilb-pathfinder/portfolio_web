@@ -4,7 +4,8 @@ import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
 import { ArrowUpRightIcon } from "@/components/ui/icons";
 import { ProjectVisual } from "@/components/work/ProjectVisual";
-import { projects } from "@/lib/content";
+import { GraphicCard } from "@/components/work/GraphicCard";
+import { graphicProjects, projects } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: "Work",
@@ -27,7 +28,11 @@ export default function WorkPage() {
           </p>
         </Reveal>
 
-        <div className="mt-14 space-y-6">
+        <div className="mt-14">
+          <p className="text-sm uppercase tracking-wide text-text-muted">Software</p>
+          <h2 className="font-home-display text-h2 mt-2 font-bold">Software projects</h2>
+        </div>
+        <div className="mt-8 space-y-6">
           {featured && (
             <Reveal>
               <div className="rounded-2xl border border-border bg-surface p-6 sm:p-8">
@@ -64,7 +69,7 @@ export default function WorkPage() {
                     </div>
                   </div>
                   <div className="order-1 md:order-2">
-                    <ProjectVisual title={featured.title} index="01" />
+                    <ProjectVisual title={featured.title} index="01" image={featured.image?.card} />
                   </div>
                 </div>
               </div>
@@ -75,7 +80,7 @@ export default function WorkPage() {
             {rest.map((p, i) => (
               <Reveal key={p.id} delay={i * 100}>
                 <div className="h-full rounded-2xl border border-border bg-surface p-6 sm:p-8">
-                  <ProjectVisual title={p.title} index={String(i + 2).padStart(2, "0")} />
+                  <ProjectVisual title={p.title} index={String(i + 2).padStart(2, "0")} image={p.image?.card} />
                   <h3 className="font-home-display text-xl font-semibold text-text-primary mt-6">{p.title}</h3>
                   <p className="mt-3 text-text-secondary">{p.description}</p>
                   <div className="mt-5 flex flex-wrap gap-2">
@@ -93,6 +98,17 @@ export default function WorkPage() {
                     <ArrowUpRightIcon className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                   </Link>
                 </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+        <div className="mt-24">
+          <p className="text-sm uppercase tracking-wide text-text-muted">Graphic Design</p>
+          <h2 className="font-home-display text-h2 mt-2 font-bold">Flyers, posters, campaigns and video</h2>
+          <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2">
+            {graphicProjects.map((item, i) => (
+              <Reveal key={item.id} delay={i * 100}>
+                <GraphicCard item={item} />
               </Reveal>
             ))}
           </div>

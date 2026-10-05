@@ -12,9 +12,9 @@ export const site = {
   phone: "+250 787 740 109",
   whatsapp: "250787740109",
   social: {
-    github: "https://github.com",
-    linkedin: "https://linkedin.com",
-    instagram: "https://instagram.com",
+    github: "https://github.com/Gilb-pathfinder",
+    linkedin: "https://www.linkedin.com/in/mugisha-gilbert-b32517407/",
+    instagram: "https://www.instagram.com/mugisha_mg?stkn=enI5eTg3N3V0NmMz",
   },
 };
 
@@ -132,6 +132,10 @@ export type Project = {
   description: string;
   tech: string[];
   links?: { live?: string; github?: string };
+  // real screenshots — card (small, used in grids/carousels) and full
+  // (used on the project's own page). Projects without these fall back to
+  // an abstract placeholder rather than a fake screenshot.
+  image?: { card: string; full: string };
 };
 
 export const projects: Project[] = [
@@ -145,6 +149,43 @@ export const projects: Project[] = [
     description:
       "A ride-hailing app that locates the nearest available rider from a user's current location in real time.",
     tech: ["React.js", "Next.js", "PostgreSQL", "Flutter"],
+    links: { live: "https://cityride-five.vercel.app/" },
+    image: {
+      card: "/images/projects/cityride_card.png",
+      full: "/images/projects/cityride.png",
+    },
+  },
+  {
+    id: "bugufidigital",
+    title: "Bugufi Digital",
+    category: "Software / Web Application",
+    group: "software",
+    year: "2026",
+    role: "Founder & Developer",
+    description:
+      "The website for Bugufi Digital, my own creative and software agency based in Kigali — built bilingual in English and French.",
+    tech: ["Next.js", "TypeScript", "Tailwind CSS"],
+    links: { live: "https://bugufidigital.vercel.app" },
+    image: {
+      card: "/images/projects/bugufidigital_card.png",
+      full: "/images/projects/bugufidigital.png",
+    },
+  },
+  {
+    id: "bugufi-marketplace",
+    title: "Bugufi Marketplace",
+    category: "Software / Web Application",
+    group: "software",
+    year: "2026",
+    role: "Founder & Developer",
+    description:
+      "A digital marketplace connecting wholesalers, retailers and makers across Rwanda with buyers, built under Bugufi Digital.",
+    tech: ["Next.js", "TypeScript"],
+    links: { live: "https://bugufi-three.vercel.app/" },
+    image: {
+      card: "/images/projects/bugufi_marketplace card.png",
+      full: "/images/projects/bugufi marketplace.png",
+    },
   },
   {
     id: "esano",
@@ -156,17 +197,40 @@ export const projects: Project[] = [
     description:
       "A platform built for families to organise, explore and manage their family members and lineage.",
     tech: ["React.js", "Next.js", "Firebase", "Vercel"],
+    image: {
+      card: "/images/projects/Esano Card.png",
+      full: "/images/projects/Esano AI Geneology explorer.png",
+    },
+  },
+];
+
+export type GraphicItem = {
+  id: string;
+  title: string;
+  description: string;
+  tags: string[];
+  year?: string;
+  media: { kind: "image" | "video"; src: string; poster?: string };
+};
+
+// Graphic design work. Add more here: image entries use a jpg/png, video
+// entries use an mp4 (optionally with a poster frame).
+export const graphicProjects: GraphicItem[] = [
+  {
+    id: "bugufi-flyer",
+    title: "Digital Marketing Flyer",
+    description:
+      "A flyer for Bugufi Digital's digital marketing agency, listing its services and the channels clients can reach it on.",
+    tags: ["Print", "Flyer"],
+    media: { kind: "image", src: "/images/projects/graphic Design/posterr_mock.jpg" },
   },
   {
-    id: "jobseeker",
-    title: "Jobseeker",
-    category: "Mobile Application",
-    group: "software",
-    year: "2024",
-    role: "Software Developer",
+    id: "bugufi-campaign-poster",
+    title: "Brand Campaign Poster",
     description:
-      "A mobile app that helps jobseekers discover opportunities posted by top-ranked companies in their field.",
-    tech: ["Flutter", "Firebase"],
+      "A campaign poster for Bugufi Digital, shown on an outdoor bus-stop display with a CityRide creative.",
+    tags: ["Print", "Campaign"],
+    media: { kind: "image", src: "/images/projects/graphic Design/posterr_mock1.jpg" },
   },
 ];
 
@@ -239,9 +303,45 @@ export type EducationEntry = {
   institution: string;
 };
 
-// No verified education record supplied yet — placeholder only, not to be
-// presented as fact. Replace with real details.
-export const education: EducationEntry[] = [];
+export const education: EducationEntry[] = [
+  {
+    period: "Current",
+    title: "Bachelor of Technology in Information Technology (IT)",
+    institution: "Tumba College of Technology (RP Tumba College), Rulindo, Rwanda",
+  },
+  {
+    period: "Completed",
+    title: "Software Development",
+    institution: "College APPEC Remera-Rukoma, Rwanda",
+  },
+];
+
+export type CertificateEntry = {
+  title: string;
+  issuer: string;
+  date?: string;
+  image: string;
+};
+
+export const certificates: CertificateEntry[] = [
+  {
+    title: "UI/UX – Advanced",
+    issuer: "Digital Talent Program · Ministry of ICT and Innovation, Rwanda · IHS",
+    date: "June 2026",
+    image: "/images/projects/certificates/UIUX Design Certificate.png",
+  },
+  {
+    title: "Unlock Freelance Training Program",
+    issuer: "Code and Design Alliance · in collaboration with Luxembourg Aid & Development and the ILO",
+    image: "/images/projects/certificates/Code and Design Alliance unlock freelance certificate.png",
+  },
+  {
+    title: "Climate Leadership for Community Action",
+    issuer: "Digital Opportunity Trust · in partnership with Cisco Foundation",
+    date: "June 2026",
+    image: "/images/projects/certificates/climate leadership certificate.png",
+  },
+];
 
 export const contact = {
   heading: "Have a project in mind?",

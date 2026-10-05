@@ -9,6 +9,7 @@ import { PhoneIcon, MailIcon, PinIcon, ArrowUpRightIcon } from "@/components/ui/
 import { GithubIcon, LinkedinIcon, InstagramIcon } from "@/components/home/icons";
 import {
   about,
+  certificates,
   education,
   experience,
   expertise,
@@ -181,6 +182,37 @@ export default function AboutPage() {
                 ) : (
                   <p className="text-text-muted">Education details to be added.</p>
                 )}
+              </DashCard>
+            </Reveal>
+
+            <Reveal delay={120}>
+              <DashCard title="Certificates">
+                <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
+                  {certificates.map((c) => (
+                    <a
+                      key={c.image}
+                      href={c.image}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group block overflow-hidden rounded-xl border border-border transition-colors hover:border-accent"
+                    >
+                      <div className="relative aspect-[4/3] w-full bg-bg-alt">
+                        <Image
+                          src={c.image}
+                          alt={`${c.title} certificate`}
+                          fill
+                          sizes="(min-width: 640px) 50vw, 100vw"
+                          className="object-contain p-2 transition-transform duration-500 group-hover:scale-[1.02]"
+                        />
+                      </div>
+                      <div className="p-4">
+                        <h3 className="font-home-display text-base font-semibold text-text-primary">{c.title}</h3>
+                        <p className="mt-1 text-sm text-text-muted">{c.issuer}</p>
+                        {c.date && <p className="mt-2 text-xs text-text-muted">{c.date}</p>}
+                      </div>
+                    </a>
+                  ))}
+                </div>
               </DashCard>
             </Reveal>
 

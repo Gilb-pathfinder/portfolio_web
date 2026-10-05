@@ -1,7 +1,8 @@
+import Image from "next/image";
 import Link from "next/link";
 import { Project } from "@/lib/content";
 
-function MockPanel({ title }: { title: string }) {
+function MockPanel({ title, image }: { title: string; image?: string }) {
   const initials = title
     .split(" ")
     .map((w) => w[0])
@@ -16,11 +17,17 @@ function MockPanel({ title }: { title: string }) {
         <span className="h-2.5 w-2.5 rounded-full" style={{ background: "var(--gray-300)" }} />
         <span className="h-2.5 w-2.5 rounded-full" style={{ background: "var(--gray-300)" }} />
       </div>
-      <div className="relative flex aspect-[16/11] items-center justify-center">
-        <span className="font-home-display select-none text-[6rem] font-semibold text-text-primary/[0.08]">
-          {initials}
-        </span>
-      </div>
+      {image ? (
+        <div className="relative aspect-[16/11] w-full">
+          <Image src={image} alt={`${title} screenshot`} fill sizes="(min-width: 768px) 40vw, 100vw" className="object-cover object-top" />
+        </div>
+      ) : (
+        <div className="relative flex aspect-[16/11] items-center justify-center">
+          <span className="font-home-display select-none text-[6rem] font-semibold text-text-primary/[0.08]">
+            {initials}
+          </span>
+        </div>
+      )}
     </div>
   );
 }
@@ -49,7 +56,7 @@ export function HomeProjectCard({ project }: { project: Project }) {
         </Link>
       </div>
 
-      <MockPanel title={project.title} />
+      <MockPanel title={project.title} image={project.image?.card} />
     </div>
   );
 }
