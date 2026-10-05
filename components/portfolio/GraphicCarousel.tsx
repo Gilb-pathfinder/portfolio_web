@@ -1,8 +1,9 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useCallback, useEffect, useMemo, useState } from "react";
-import { GraphicCategory, GraphicItem, graphicCategories, graphicProjects } from "@/lib/content";
+import { describe, GraphicCategory, GraphicItem, graphicCategories, graphicProjects } from "@/lib/content";
 import { ArrowUpRightIcon } from "@/components/ui/icons";
 
 const PER_SLIDE = 4;
@@ -15,24 +16,37 @@ function chunk<T>(list: T[], size: number): T[][] {
 }
 
 function Card({ item }: { item: GraphicItem }) {
+  const href = `/portfolio/media/${item.id}`;
+  const media =
+    item.media.kind === "video" ? (
+      <video className="absolute inset-0 h-full w-full object-cover" src={item.media.src} controls preload="metadata" playsInline />
+    ) : (
+      <Image src={item.media.src} alt={item.title} fill sizes="(min-width: 1024px) 25vw, 50vw" className="object-cover transition-transform duration-500 group-hover:scale-[1.03]" />
+    );
+
   return (
-    <figure className="flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-surface">
-      <div className="relative aspect-[4/5] w-full bg-bg-alt">
-        {item.media.kind === "video" ? (
-          <video className="absolute inset-0 h-full w-full object-cover" src={item.media.src} controls preload="metadata" playsInline />
-        ) : (
-          <Image src={item.media.src} alt={item.title} fill sizes="(min-width: 1024px) 25vw, 50vw" className="object-cover" />
-        )}
-      </div>
+    <figure className="group flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-surface">
+      {item.media.kind === "video" ? (
+        <div className="relative aspect-[4/5] w-full bg-bg-alt">{media}</div>
+      ) : (
+        <Link href={href} className="relative block aspect-[4/5] w-full overflow-hidden bg-bg-alt" aria-label={`View ${item.title}`}>
+          {media}
+        </Link>
+      )}
       <figcaption className="flex flex-1 flex-col gap-2 p-4">
-        <p className="font-home-display text-base font-semibold text-text-primary">{item.title}</p>
-        {item.description && <p className="text-sm text-text-secondary">{item.description}</p>}
-        <div className="mt-auto flex flex-wrap gap-1.5 pt-2">
+        <Link href={href} className="font-home-display text-base font-semibold text-text-primary hover:underline">
+          {item.title}
+        </Link>
+        <p className="text-sm text-text-secondary">{describe(item)}</p>
+        <div className="mt-auto flex flex-wrap items-center gap-1.5 pt-2">
           {item.tags.map((t) => (
             <span key={t} className="rounded-full border border-border-strong px-2.5 py-0.5 text-[11px] text-text-secondary">
               {t}
             </span>
           ))}
+          <Link href={href} className="ml-auto text-xs text-text-primary underline underline-offset-4">
+            View
+          </Link>
         </div>
       </figcaption>
     </figure>

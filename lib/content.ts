@@ -215,6 +215,20 @@ export type GraphicItem = {
   media: { kind: "image" | "video"; src: string };
 };
 
+// Shown under any graphic item that has no description of its own.
+export const categoryDescriptions: Record<GraphicCategory, string> = {
+  posters:
+    "I design posters for events, concerts, programs, banners, flyers, pull-ups and many more.",
+  magazines: "I design magazine layouts and editorial pages — covers, spreads and interior pages.",
+  videos: "I create short promotional videos and reels for events and brands.",
+  logos: "I design logos that are simple, memorable and built to work at any size.",
+  branding: "I design complete brand identities — colours, typography and the visual systems that hold a brand together.",
+};
+
+export function describe(item: GraphicItem): string {
+  return item.description || categoryDescriptions[item.category];
+}
+
 export const graphicCategories: { value: GraphicCategory | "all"; label: string }[] = [
   { value: "all", label: "All" },
   { value: "posters", label: "Posters" },
