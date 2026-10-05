@@ -50,7 +50,7 @@ export function Navbar() {
                 <Link
                   key={item.href}
                   href={item.href}
-                  className="text-sm lowercase tracking-wide text-white/70 transition-colors duration-300 hover:text-white"
+                  className="text-sm tracking-wide text-white/70 transition-colors duration-300 hover:text-white"
                 >
                   {item.label}
                 </Link>
@@ -104,7 +104,7 @@ export function Navbar() {
               key={item.href}
               href={item.href}
               onClick={() => setOpen(false)}
-              className="text-h1 lowercase font-medium leading-none text-white"
+              className="text-h1 font-medium leading-none text-white"
               style={{
                 transitionDelay: open ? `${i * 60 + 120}ms` : "0ms",
               }}
