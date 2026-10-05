@@ -2,7 +2,7 @@ import Link from "next/link";
 import { ReactNode } from "react";
 import { ArrowUpRightIcon } from "@/components/ui/icons";
 
-type Variant = "solid" | "outline" | "inverted" | "outlineLight";
+type Variant = "solid" | "outline" | "inverted" | "outlineLight" | "accent";
 
 const variants: Record<Variant, string> = {
   solid: "bg-ink text-white hover:bg-gray-800",
@@ -10,6 +10,7 @@ const variants: Record<Variant, string> = {
   inverted: "bg-white text-ink hover:bg-gray-100",
   // for use over a dark/photo background
   outlineLight: "border border-white/40 text-white hover:border-white hover:bg-white/10",
+  accent: "bg-accent text-ink hover:bg-accent-2",
 };
 
 export function PillButton({

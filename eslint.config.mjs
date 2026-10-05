@@ -12,6 +12,8 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Reference-only project kept inside the repo for design research.
+    "bugufidigital/**",
   ]),
 ]);
 

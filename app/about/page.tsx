@@ -1,11 +1,20 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 import { PageHeader } from "@/components/ui/PageHeader";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { Reveal } from "@/components/ui/Reveal";
+import { Marquee } from "@/components/ui/Marquee";
 import { Experience } from "@/components/sections/Experience";
 import { CTA } from "@/components/sections/CTA";
-import { about, approach, education, expertise, site } from "@/lib/content";
+import { GithubIcon, LinkedinIcon, InstagramIcon } from "@/components/home/icons";
+import { about, approach, education, expertise, heroStats, techStack, site } from "@/lib/content";
+
+const socials = [
+  { label: "GitHub", href: site.social.github, Icon: GithubIcon },
+  { label: "LinkedIn", href: site.social.linkedin, Icon: LinkedinIcon },
+  { label: "Instagram", href: site.social.instagram, Icon: InstagramIcon },
+];
 
 export const metadata: Metadata = {
   title: "About",
@@ -21,6 +30,78 @@ export default function AboutPage() {
         title={`${site.role}, based in ${site.location}.`}
         description="Software first — with the design instinct to know what a good interface should feel like before a line of code is written."
       />
+
+      {/* Profile — photo, contact details, portfolio links, quick stats */}
+      <section>
+        <Container>
+          <Reveal>
+            <div className="grid grid-cols-1 gap-10 border-t border-border py-12 md:grid-cols-12 md:items-center">
+              <div className="md:col-span-3">
+                <div className="relative mx-auto aspect-[4/5] w-full max-w-[220px] overflow-hidden rounded-2xl border border-border md:mx-0">
+                  <Image
+                    src="/images/my profile.jpg"
+                    alt={site.name}
+                    fill
+                    sizes="220px"
+                    className="object-cover"
+                  />
+                </div>
+              </div>
+
+              <div className="md:col-span-5">
+                <dl className="space-y-4">
+                  <div className="flex items-center justify-between gap-4 border-b border-border pb-4">
+                    <dt className="font-mono text-meta uppercase text-text-muted">Email</dt>
+                    <dd>
+                      <a href={`mailto:${site.email}`} className="hover:text-text-primary">
+                        {site.email}
+                      </a>
+                    </dd>
+                  </div>
+                  <div className="flex items-center justify-between gap-4 border-b border-border pb-4">
+                    <dt className="font-mono text-meta uppercase text-text-muted">Phone</dt>
+                    <dd>
+                      <a href={`tel:${site.phone.replace(/\s+/g, "")}`}>{site.phone}</a>
+                    </dd>
+                  </div>
+                  <div className="flex items-center justify-between gap-4">
+                    <dt className="font-mono text-meta uppercase text-text-muted">Based in</dt>
+                    <dd>{site.address}</dd>
+                  </div>
+                </dl>
+
+                <div className="mt-6 flex items-center gap-3">
+                  {socials.map(({ label, href, Icon }) => (
+                    <a
+                      key={label}
+                      href={href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={label}
+                      className="flex h-10 w-10 items-center justify-center rounded-full border border-border-strong text-text-secondary transition-colors duration-300 hover:border-ink hover:text-ink"
+                    >
+                      <Icon className="h-4 w-4" />
+                    </a>
+                  ))}
+                </div>
+              </div>
+
+              <div className="md:col-span-4">
+                <div className="grid grid-cols-3 gap-4">
+                  {heroStats.map((stat) => (
+                    <div key={stat.label} className="rounded-xl border border-border p-4 text-center">
+                      <p className="font-display text-h3">{stat.value}</p>
+                      <p className="mt-1 text-xs leading-snug text-text-muted">{stat.label}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </Reveal>
+        </Container>
+      </section>
+
+      <Marquee items={techStack} />
 
       {/* 01 — Bio */}
       <section style={{ paddingBlock: "var(--section-y)" }}>

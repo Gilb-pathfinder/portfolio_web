@@ -1,67 +1,86 @@
-import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 import { Marquee } from "@/components/ui/Marquee";
 import { PillButtonWithArrow } from "./PillButton";
-import { StarRating } from "./icons";
-import { heroStats, heroRating, roles, hero } from "@/lib/content";
+import { HeroCarousel } from "./HeroCarousel";
+import { heroStats, roles, hero } from "@/lib/content";
+
+const heroBackground = {
+  backgroundImage: [
+    "radial-gradient(55% 65% at 82% 42%, rgba(196,240,65,0.28) 0%, rgba(196,240,65,0) 62%)",
+    "radial-gradient(40% 45% at 96% 92%, rgba(240,245,45,0.16) 0%, rgba(240,245,45,0) 65%)",
+    "radial-gradient(45% 55% at 8% 10%, rgba(240,245,45,0.1) 0%, rgba(240,245,45,0) 60%)",
+    "radial-gradient(70% 60% at 20% 105%, rgba(114,116,95,0.5) 0%, rgba(114,116,95,0) 62%)",
+    "radial-gradient(35% 40% at 55% -5%, rgba(46,196,142,0.14) 0%, rgba(46,196,142,0) 70%)",
+    "linear-gradient(135deg, #050505 0%, #0a0f08 38%, #10160c 62%, #070806 100%)",
+  ].join(", "),
+};
+
+const gridOverlay = {
+  backgroundImage:
+    "linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px)",
+  backgroundSize: "56px 56px",
+  WebkitMaskImage: "radial-gradient(70% 70% at 60% 45%, #000 0%, transparent 75%)",
+  maskImage: "radial-gradient(70% 70% at 60% 45%, #000 0%, transparent 75%)",
+};
 
 export function HomeHero() {
   return (
     <>
-      <section className="relative isolate flex min-h-[92vh] items-center overflow-hidden pt-24 md:pt-16">
-        <Image
-          src="/backgrounds/hero.jpg"
-          alt=""
-          fill
-          priority
-          sizes="100vw"
-          className="-z-20 object-cover"
-        />
-        <div className="absolute inset-0 -z-10 bg-gradient-to-r from-black via-black/75 to-black/45" />
+      <section
+        className="relative isolate flex min-h-[100svh] items-center overflow-hidden pt-28 pb-16 md:pt-24"
+        style={heroBackground}
+      >
+        <div className="absolute inset-0 -z-10" style={gridOverlay} aria-hidden />
 
-        <Container className="relative w-full py-16">
-          <div className="grid grid-cols-1 gap-12 md:grid-cols-12 md:gap-6">
-            <div className="md:col-span-7">
+        <Container className="relative w-full">
+          <div className="grid grid-cols-1 items-center gap-16 md:grid-cols-12 md:gap-6">
+            <div className="md:col-span-6">
+              <span className="inline-flex items-center gap-3 rounded-full border border-white/15 bg-white/5 py-1.5 pl-4 pr-1.5 text-sm text-white backdrop-blur-sm">
+                Open to new projects
+                <span className="rounded-full bg-accent px-3 py-1 text-xs font-semibold text-ink">
+                  Let&apos;s talk
+                </span>
+              </span>
+
               <h1
-                className="font-home-display text-h1 font-bold text-white"
-                style={{ lineHeight: 0.92 }}
+                className="mt-7 max-w-[12ch] text-5xl font-bold sm:text-6xl lg:text-7xl"
+                style={{
+                  lineHeight: 1.02,
+                  letterSpacing: "-0.03em",
+                  backgroundImage: "linear-gradient(100deg, #fcfcfd 0%, #fcfcfd 45%, #c4f041 82%, #f0f52d 100%)",
+                  WebkitBackgroundClip: "text",
+                  backgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                }}
               >
-                <span className="text-gray-300">{hero.greeting}</span>{" "}
-                <span>{hero.role}.</span>
+                {hero.greeting} {hero.role}.
               </h1>
-              <p
-                className="mt-6 max-w-md text-gray-300"
-                style={{ fontSize: "var(--fs-body-lg)" }}
-              >
-                {hero.description}
-              </p>
-              <div className="mt-8 flex flex-wrap items-center gap-4">
-                <PillButtonWithArrow href="#work" variant="inverted">
+
+              <p className="mt-5 max-w-md text-lg text-white/75">{hero.description}</p>
+
+              <div className="mt-9 flex flex-wrap items-center gap-4">
+                <PillButtonWithArrow href="#work" variant="accent">
                   Get Started
                 </PillButtonWithArrow>
                 <PillButtonWithArrow href="#work" variant="outlineLight">
                   View Projects
                 </PillButtonWithArrow>
               </div>
-            </div>
 
-            <div className="md:col-span-4 md:col-start-9">
-              <div className="rounded-2xl bg-black/55 p-6 backdrop-blur-sm">
-                <div className="grid grid-cols-2 gap-x-6 gap-y-6 md:grid-cols-1">
+              <div className="mt-12 max-w-md border-t border-white/10 pt-6">
+                <div className="flex flex-wrap gap-x-8 gap-y-4">
                   {heroStats.map((stat) => (
                     <div key={stat.label}>
-                      <p className="font-home-display text-h3 font-semibold text-white">
-                        {stat.value}
-                      </p>
-                      <p className="mt-1 text-sm text-gray-300">{stat.label}</p>
+                      <p className="font-home-display text-2xl font-bold text-white">{stat.value}</p>
+                      <p className="mt-0.5 text-xs text-white/55">{stat.label}</p>
                     </div>
                   ))}
-                  <div>
-                    <StarRating starClassName="text-white" />
-                    <p className="mt-1 text-sm text-gray-300">{heroRating.label}</p>
-                  </div>
                 </div>
               </div>
+            </div>
+
+            <div className="md:col-span-6">
+              <HeroCarousel />
             </div>
           </div>
         </Container>

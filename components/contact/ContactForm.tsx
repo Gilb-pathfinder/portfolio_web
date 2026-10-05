@@ -7,12 +7,12 @@ import { ArrowUpRightIcon } from "@/components/ui/icons";
 
 type Status = "idle" | "loading" | "success" | "error";
 
-const fieldClass =
-  "w-full border-b border-border-strong bg-transparent py-3 text-text-primary placeholder:text-text-muted focus:border-ink transition-colors duration-300 outline-none";
+export function ContactForm({ invert = false }: { invert?: boolean }) {
+  const fieldClass = invert
+    ? "w-full border-b border-white/25 bg-transparent py-3 text-white placeholder:text-white/40 focus:border-accent transition-colors duration-300 outline-none"
+    : "w-full border-b border-border-strong bg-transparent py-3 text-text-primary placeholder:text-text-muted focus:border-ink transition-colors duration-300 outline-none";
 
-const labelClass = "font-mono text-meta uppercase text-text-muted";
-
-export function ContactForm() {
+  const labelClass = `font-mono text-meta uppercase ${invert ? "text-white/50" : "text-text-muted"}`;
   const [status, setStatus] = useState<Status>("idle");
   const [errors, setErrors] = useState<Partial<Record<keyof ContactPayload, string>>>({});
   const [serverError, setServerError] = useState<string | null>(null);
@@ -60,9 +60,9 @@ export function ContactForm() {
 
   if (status === "success") {
     return (
-      <div className="border-t border-border py-16">
-        <p className="font-display text-h2">Message sent.</p>
-        <p className="mt-4 max-w-md text-text-secondary">
+      <div className={`border-t py-16 ${invert ? "border-white/15" : "border-border"}`}>
+        <p className={`font-display text-h2 ${invert ? "text-white" : ""}`}>Message sent.</p>
+        <p className={`mt-4 max-w-md ${invert ? "text-white/60" : "text-text-secondary"}`}>
           Thanks for reaching out — I&apos;ll get back to you as soon as I can.
         </p>
       </div>
@@ -70,7 +70,11 @@ export function ContactForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="border-t border-border pt-10" noValidate>
+    <form
+      onSubmit={handleSubmit}
+      className={`border-t pt-10 ${invert ? "border-white/15" : "border-border"}`}
+      noValidate
+    >
       {/* honeypot — hidden from real users, left empty by them */}
       <input
         type="text"
@@ -87,7 +91,7 @@ export function ContactForm() {
             Name
           </label>
           <input id="name" name="name" type="text" className={`${fieldClass} mt-2`} placeholder="Your name" />
-          {errors.name && <p className="mt-2 text-sm text-text-secondary">{errors.name}</p>}
+          {errors.name && <p className={`mt-2 text-sm ${invert ? "text-white/60" : "text-text-secondary"}`}>{errors.name}</p>}
         </div>
 
         <div>
@@ -95,7 +99,7 @@ export function ContactForm() {
             Email
           </label>
           <input id="email" name="email" type="email" className={`${fieldClass} mt-2`} placeholder="you@company.com" />
-          {errors.email && <p className="mt-2 text-sm text-text-secondary">{errors.email}</p>}
+          {errors.email && <p className={`mt-2 text-sm ${invert ? "text-white/60" : "text-text-secondary"}`}>{errors.email}</p>}
         </div>
 
         <div>
@@ -118,13 +122,14 @@ export function ContactForm() {
             ))}
           </select>
           {errors.projectType && (
-            <p className="mt-2 text-sm text-text-secondary">{errors.projectType}</p>
+            <p className={`mt-2 text-sm ${invert ? "text-white/60" : "text-text-secondary"}`}>{errors.projectType}</p>
           )}
         </div>
 
         <div>
           <label htmlFor="company" className={labelClass}>
-            Company / Organisation <span className="normal-case text-text-muted">(optional)</span>
+            Company / Organisation{" "}
+            <span className={`normal-case ${invert ? "text-white/40" : "text-text-muted"}`}>(optional)</span>
           </label>
           <input id="company" name="company" type="text" className={`${fieldClass} mt-2`} placeholder="Optional" />
         </div>
@@ -140,12 +145,18 @@ export function ContactForm() {
             className={`${fieldClass} mt-2 resize-none`}
             placeholder="What are you looking to build?"
           />
-          {errors.message && <p className="mt-2 text-sm text-text-secondary">{errors.message}</p>}
+          {errors.message && <p className={`mt-2 text-sm ${invert ? "text-white/60" : "text-text-secondary"}`}>{errors.message}</p>}
         </div>
       </div>
 
       {serverError && (
-        <p className="mt-6 border border-border-strong bg-bg-alt p-4 text-text-secondary">
+        <p
+          className={`mt-6 border p-4 ${
+            invert
+              ? "border-white/15 bg-white/5 text-white/70"
+              : "border-border-strong bg-bg-alt text-text-secondary"
+          }`}
+        >
           {serverError}
         </p>
       )}
@@ -155,10 +166,18 @@ export function ContactForm() {
         disabled={status === "loading"}
         className="group mt-10 inline-flex items-center gap-3 disabled:opacity-60"
       >
-        <span className="inline-flex items-center rounded-full bg-ink px-7 py-3.5 text-sm font-medium text-white transition-colors duration-300 group-hover:bg-gray-800">
+        <span
+          className={`inline-flex items-center rounded-full px-7 py-3.5 text-sm font-medium transition-colors duration-300 ${
+            invert ? "bg-accent text-ink group-hover:bg-accent-2" : "bg-ink text-white group-hover:bg-gray-800"
+          }`}
+        >
           {status === "loading" ? "Sending…" : "Send Message"}
         </span>
-        <span className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-ink text-white transition-[transform,background-color] duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:bg-gray-800">
+        <span
+          className={`inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full transition-[transform,background-color] duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 ${
+            invert ? "bg-accent text-ink group-hover:bg-accent-2" : "bg-ink text-white group-hover:bg-gray-800"
+          }`}
+        >
           <ArrowUpRightIcon className="h-4 w-4" />
         </span>
       </button>

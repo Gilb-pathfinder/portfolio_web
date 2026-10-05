@@ -10,12 +10,17 @@ export const site = {
   address: "Kigali, Rwanda",
   email: "mugishagillbert@gmail.com",
   phone: "+250 787 740 109",
+  whatsapp: "250787740109",
   social: {
     github: "https://github.com",
     linkedin: "https://linkedin.com",
     instagram: "https://instagram.com",
   },
 };
+
+export function whatsappLink(message: string) {
+  return `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(message)}`;
+}
 
 export const nav = [
   { label: "Home", href: "/" },
@@ -47,6 +52,19 @@ export const heroStats = [
 ];
 
 export const heroRating = { label: "5-star ratings, 2k+ reviews" };
+
+export const techStack = [
+  "JavaScript",
+  "TypeScript",
+  "React",
+  "Next.js",
+  "Node.js",
+  "Flutter",
+  "Firebase",
+  "PostgreSQL",
+  "Figma",
+  "Python",
+];
 
 export const homeAbout = {
   badge: "3+ Years of Experience",

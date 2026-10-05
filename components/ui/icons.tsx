@@ -46,3 +46,20 @@ export function ArrowUpRightIcon({
     </svg>
   );
 }
+
+export function PhoneIcon({ className = "" }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className={className} aria-hidden>
+      <path d="M3.5 5.5c0-1.1.9-2 2-2h2.2c.5 0 .9.3 1 .8l1 3.6c.1.4 0 .9-.3 1.2L8 10.5a1 1 0 0 0-.2 1.1 12 12 0 0 0 4.6 4.6 1 1 0 0 0 1.1-.2l1.4-1.4c.3-.3.8-.4 1.2-.3l3.6 1c.5.1.8.5.8 1v2.2c0 1.1-.9 2-2 2h-1C9.8 20.5 3.5 14.2 3.5 6.5v-1Z" />
+    </svg>
+  );
+}
+
+export function MailIcon({ className = "" }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className={className} aria-hidden>
+      <rect x="3" y="5" width="18" height="14" rx="2.5" />
+      <path d="m4 7 8 6 8-6" />
+    </svg>
+  );
+}

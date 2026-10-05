@@ -9,13 +9,13 @@ import { ArrowUpRightIcon } from "@/components/ui/icons";
 
 export function Navbar() {
   const pathname = usePathname();
-  const isHome = pathname === "/";
+  // Home and Contact open on a dark hero, so their nav text needs to start
+  // light rather than wait for the scrolled (solid dark bar) state.
+  const hasDarkHero = pathname === "/" || pathname === "/contact";
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
 
-  // Home's hero sits on a dark photo background, so its nav text needs to
-  // stay light even before the scrolled (solid black bar) state kicks in.
-  const light = scrolled || isHome;
+  const light = scrolled || hasDarkHero;
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);

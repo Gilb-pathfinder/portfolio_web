@@ -1,37 +1,52 @@
 @import "tailwindcss";
 
 :root {
-  /* grayscale system */
-  --black: #000000;
-  --white: #ffffff;
-  --gray-950: #111111;
-  --gray-900: #1a1a1a;
-  --gray-800: #222222;
-  --gray-700: #333333;
+  /* Bugufi Digital's own brand palette (styles/bugufi.css, styles/template.css
+     in the bugufidigital reference project) — reused here for brand
+     consistency between the company site and this personal portfolio. */
+  --bf-dark: #050505;
+  --bf-dark-two: #111111;
+  --bf-lime: #c4f041;
+  --bf-yellow: #f0f52d;
+  --bf-olive: #72745f;
+  --bf-light: #fcfcfd;
+  --bf-bg: #f8fafc;
+  --bf-secondary: #555555;
+
+  /* neutral ramp, anchored to the brand's dark/light endpoints */
+  --black: var(--bf-dark);
+  --white: var(--bf-light);
+  --gray-950: #050505;
+  --gray-900: #111111;
+  --gray-800: #16171a;
+  --gray-700: #3a3a3a;
   --gray-600: #555555;
-  --gray-500: #777777;
-  --gray-400: #999999;
-  --gray-300: #cccccc;
-  --gray-200: #e5e5e5;
-  --gray-100: #f2f2f2;
-  --gray-50: #f7f7f7;
+  --gray-500: #767676;
+  --gray-400: #9a9a9a;
+  --gray-300: #c7c9cc;
+  --gray-200: #e4e7eb;
+  --gray-100: #eef1f5;
+  --gray-50: #f8fafc;
 
   /* semantic tokens */
-  --bg: var(--white);
-  --bg-alt: var(--gray-50);
+  --bg: var(--bf-bg);
+  --bg-alt: var(--gray-100);
   --surface: var(--gray-100);
-  --ink: var(--black);
-  --text-primary: var(--gray-950);
-  --text-secondary: var(--gray-600);
-  --text-muted: var(--gray-400);
+  --ink: var(--bf-dark);
+  --accent: var(--bf-lime);
+  --accent-2: var(--bf-yellow);
+  --accent-soft: #eef7d9;
+  --text-primary: #0a0a0a;
+  --text-secondary: var(--bf-secondary);
+  --text-muted: #8a8a8a;
   --border: var(--gray-200);
   --border-strong: var(--gray-300);
 
-  --invert-bg: var(--gray-950);
-  --invert-surface: var(--gray-900);
-  --invert-text: var(--gray-50);
-  --invert-text-muted: var(--gray-400);
-  --invert-border: rgba(255, 255, 255, 0.14);
+  --invert-bg: var(--bf-dark);
+  --invert-surface: var(--bf-dark-two);
+  --invert-text: var(--bf-light);
+  --invert-text-muted: rgba(252, 252, 253, 0.6);
+  --invert-border: rgba(255, 255, 255, 0.12);
 
   /* motion */
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
@@ -53,6 +68,9 @@
   --color-bg-alt: var(--bg-alt);
   --color-surface: var(--surface);
   --color-ink: var(--ink);
+  --color-accent: var(--accent);
+  --color-accent-2: var(--accent-2);
+  --color-accent-soft: var(--accent-soft);
   --color-text-primary: var(--text-primary);
   --color-text-secondary: var(--text-secondary);
   --color-text-muted: var(--text-muted);
@@ -63,7 +81,14 @@
   --color-invert-text: var(--invert-text);
   --color-invert-text-muted: var(--invert-text-muted);
 
-  --font-sans: var(--font-poppins);
+  --font-sans: var(--font-helvetica);
+}
+
+:root {
+  /* "Helvetica Now Display" is a paid Monotype release, not obtainable to
+     bundle as a web font here — this is the system Helvetica stack, which
+     renders as true Helvetica/Helvetica Neue on machines that have it. */
+  --font-helvetica: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 html {
@@ -73,7 +98,7 @@ html {
 body {
   background: var(--bg);
   color: var(--text-primary);
-  font-family: var(--font-poppins), Arial, Helvetica, sans-serif;
+  font-family: var(--font-helvetica);
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
@@ -98,7 +123,7 @@ body {
 .font-display,
 .font-home-display,
 .font-mono {
-  font-family: var(--font-poppins), Arial, sans-serif;
+  font-family: var(--font-helvetica);
 }
 
 .text-display {
@@ -210,6 +235,25 @@ body {
     animation: none;
     opacity: 1;
     transform: none;
+  }
+}
+
+/* hero card float, used by the sliding photo-card stack */
+@keyframes card-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+.card-float {
+  animation: card-float 7s var(--ease-in-out) infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .card-float {
+    animation: none;
   }
 }
 
