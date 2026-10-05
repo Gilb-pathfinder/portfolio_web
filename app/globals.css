@@ -237,25 +237,6 @@ body {
   }
 }
 
-/* hero card float, used by the sliding photo-card stack */
-@keyframes card-float {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-12px);
-  }
-}
-.card-float {
-  animation: card-float 7s var(--ease-in-out) infinite;
-}
-@media (prefers-reduced-motion: reduce) {
-  .card-float {
-    animation: none;
-  }
-}
-
 /* thin, precise focus ring */
 :focus-visible {
   outline: 2px solid var(--accent);

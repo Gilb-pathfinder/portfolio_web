@@ -1,7 +1,7 @@
 import { Container } from "@/components/ui/Container";
 import { Marquee } from "@/components/ui/Marquee";
 import { PillButton } from "./PillButton";
-import { HeroCarousel } from "./HeroCarousel";
+import { HeroComposition } from "./HeroComposition";
 import { heroStats, roles, hero } from "@/lib/content";
 
 const heroBackground = {
@@ -79,7 +79,7 @@ export function HomeHero() {
             </div>
 
             <div className="md:col-span-6">
-              <HeroCarousel />
+              <HeroComposition />
             </div>
           </div>
         </Container>
