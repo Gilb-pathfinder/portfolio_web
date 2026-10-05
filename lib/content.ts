@@ -25,7 +25,7 @@ export function whatsappLink(message: string) {
 export const nav = [
   { label: "Home", href: "/" },
   { label: "About", href: "/about" },
-  { label: "Work", href: "/work" },
+  { label: "Portfolio", href: "/portfolio" },
   { label: "Contact", href: "/contact" },
 ];
 
@@ -204,33 +204,178 @@ export const projects: Project[] = [
   },
 ];
 
+export type GraphicCategory = "posters" | "magazines" | "videos" | "logos" | "branding";
+
 export type GraphicItem = {
   id: string;
   title: string;
   description: string;
   tags: string[];
-  year?: string;
-  media: { kind: "image" | "video"; src: string; poster?: string };
+  category: GraphicCategory;
+  media: { kind: "image" | "video"; src: string };
 };
 
-// Graphic design work. Add more here: image entries use a jpg/png, video
-// entries use an mp4 (optionally with a poster frame).
+export const graphicCategories: { value: GraphicCategory | "all"; label: string }[] = [
+  { value: "all", label: "All" },
+  { value: "posters", label: "Posters" },
+  { value: "magazines", label: "Magazines" },
+  { value: "videos", label: "Videos" },
+  { value: "logos", label: "Logos" },
+  { value: "branding", label: "Branding" },
+];
+
 export const graphicProjects: GraphicItem[] = [
   {
-    id: "bugufi-flyer",
+    id: "poster-01",
+    title: "Poster 01",
+    description: "",
+    tags: ["Print"],
+    category: "posters",
+    media: { kind: "image", src: "/images/projects/graphic Design/FIFA Semi-final.jpg" },
+  },
+  {
+    id: "poster-02",
+    title: "Poster 02",
+    description: "",
+    tags: ["Print"],
+    category: "posters",
+    media: { kind: "image", src: "/images/projects/graphic Design/Friday_Berbecue_.jpg" },
+  },
+  {
+    id: "poster-03",
+    title: "Poster 03",
+    description: "",
+    tags: ["Print"],
+    category: "posters",
+    media: { kind: "image", src: "/images/projects/graphic Design/azzuri_poster_cinematic.jpg" },
+  },
+  {
+    id: "poster-04",
+    title: "Poster 04",
+    description: "",
+    tags: ["Print"],
+    category: "posters",
+    media: { kind: "image", src: "/images/projects/graphic Design/brunch_poster1.jpg" },
+  },
+  {
+    id: "poster-05",
+    title: "Poster 05",
+    description: "",
+    tags: ["Print"],
+    category: "posters",
+    media: { kind: "image", src: "/images/projects/graphic Design/bugufi_poster.jpg" },
+  },
+  {
+    id: "poster-06",
+    title: "Poster 06",
+    description: "",
+    tags: ["Print"],
+    category: "posters",
+    media: { kind: "image", src: "/images/projects/graphic Design/call.jpg" },
+  },
+  {
+    id: "poster-07",
+    title: "Poster 07",
+    description: "",
+    tags: ["Print"],
+    category: "posters",
+    media: { kind: "image", src: "/images/projects/graphic Design/friday18.jpg" },
+  },
+  {
+    id: "poster-08",
+    title: "Poster 08",
+    description: "",
+    tags: ["Print"],
+    category: "posters",
+    media: { kind: "image", src: "/images/projects/graphic Design/friday_program.jpg" },
+  },
+  {
+    id: "poster-09",
+    title: "Poster 09",
+    description: "",
+    tags: ["Print"],
+    category: "posters",
+    media: { kind: "image", src: "/images/projects/graphic Design/ordinary.jpg" },
+  },
+  {
+    id: "poster-10",
+    title: "Poster 10",
+    description: "",
+    tags: ["Print"],
+    category: "posters",
+    media: { kind: "image", src: "/images/projects/graphic Design/our services.jpg" },
+  },
+  {
+    id: "poster-11",
+    title: "Poster 11",
+    description: "",
+    tags: ["Print"],
+    category: "posters",
+    media: { kind: "image", src: "/images/projects/graphic Design/posterer.jpg" },
+  },
+  {
+    id: "poster-12",
     title: "Digital Marketing Flyer",
-    description:
-      "A flyer for Bugufi Digital's digital marketing agency, listing its services and the channels clients can reach it on.",
-    tags: ["Print", "Flyer"],
+    description: "A flyer for Bugufi Digital's digital marketing agency, listing its services and the channels clients can reach it on.",
+    tags: ["Print","Flyer"],
+    category: "posters",
     media: { kind: "image", src: "/images/projects/graphic Design/posterr_mock.jpg" },
   },
   {
-    id: "bugufi-campaign-poster",
+    id: "poster-13",
     title: "Brand Campaign Poster",
-    description:
-      "A campaign poster for Bugufi Digital, shown on an outdoor bus-stop display with a CityRide creative.",
-    tags: ["Print", "Campaign"],
+    description: "A campaign poster for Bugufi Digital, shown on an outdoor bus-stop display with a CityRide creative.",
+    tags: ["Print","Campaign"],
+    category: "posters",
     media: { kind: "image", src: "/images/projects/graphic Design/posterr_mock1.jpg" },
+  },
+  {
+    id: "poster-14",
+    title: "Poster 14",
+    description: "",
+    tags: ["Print"],
+    category: "posters",
+    media: { kind: "image", src: "/images/projects/graphic Design/versper_.jpg" },
+  },
+  {
+    id: "poster-15",
+    title: "Poster 15",
+    description: "",
+    tags: ["Print"],
+    category: "posters",
+    media: { kind: "image", src: "/images/projects/graphic Design/versper_Program.jpg" },
+  },
+  {
+    id: "poster-16",
+    title: "Poster 16",
+    description: "",
+    tags: ["Print"],
+    category: "posters",
+    media: { kind: "image", src: "/images/projects/graphic Design/verspers.jpg" },
+  },
+  {
+    id: "poster-17",
+    title: "Poster 17",
+    description: "",
+    tags: ["Print"],
+    category: "posters",
+    media: { kind: "image", src: "/images/projects/graphic Design/we're open.jpg" },
+  },
+  {
+    id: "magazine-01",
+    title: "Magazine Spread",
+    description: "",
+    tags: ["Print","Magazine"],
+    category: "magazines",
+    media: { kind: "image", src: "/images/projects/graphic Design/Magazines.jpg" },
+  },
+  {
+    id: "video-01",
+    title: "Concert Reel",
+    description: "A reel advertising a concert.",
+    tags: ["Video"],
+    category: "videos",
+    media: { kind: "video", src: "/images/projects/graphic Design/Video_pishoni.mp4" },
   },
 ];
 

@@ -45,7 +45,7 @@ export function HomeTestimonials() {
             </h2>
             <p className="mt-4 max-w-xs text-text-secondary">{homeCopy.feedbackBody}</p>
             <div className="mt-6">
-              <PillButtonWithArrow href="/work" variant="solid">
+              <PillButtonWithArrow href="/portfolio" variant="solid">
                 See All Feedback
               </PillButtonWithArrow>
             </div>

@@ -4,11 +4,11 @@ import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
 import { ArrowUpRightIcon } from "@/components/ui/icons";
 import { ProjectVisual } from "@/components/work/ProjectVisual";
-import { GraphicCard } from "@/components/work/GraphicCard";
-import { graphicProjects, projects } from "@/lib/content";
+import { GraphicCarousel } from "@/components/portfolio/GraphicCarousel";
+import { projects } from "@/lib/content";
 
 export const metadata: Metadata = {
-  title: "Work",
+  title: "Portfolio",
   description: "A collection of software, interface and visual design work by Gilbert Mugisha.",
 };
 
@@ -19,7 +19,7 @@ export default function WorkPage() {
     <section className="pt-28 md:pt-36" style={{ paddingBottom: "var(--section-y)" }}>
       <Container>
         <Reveal>
-          <p className="text-sm uppercase tracking-wide text-text-muted">Work</p>
+          <p className="text-sm uppercase tracking-wide text-text-muted">Portfolio</p>
           <h1 className="font-home-display text-h1 mt-3 max-w-2xl font-bold">
             Selected software, UI/UX and graphic design work.
           </h1>
@@ -58,7 +58,7 @@ export default function WorkPage() {
                           ))}
                         </div>
                       </div>
-                      <Link href={`/work/${featured.id}`} className="group inline-flex items-center gap-3 w-fit">
+                      <Link href={`/portfolio/${featured.id}`} className="group inline-flex items-center gap-3 w-fit">
                         <span className="inline-flex items-center rounded-full bg-accent px-6 py-3 text-sm font-medium text-ink transition-colors group-hover:bg-white">
                           View Project
                         </span>
@@ -91,7 +91,7 @@ export default function WorkPage() {
                     ))}
                   </div>
                   <Link
-                    href={`/work/${p.id}`}
+                    href={`/portfolio/${p.id}`}
                     className="group mt-6 inline-flex items-center gap-2 text-sm font-medium text-text-primary"
                   >
                     View Project
@@ -104,13 +104,9 @@ export default function WorkPage() {
         </div>
         <div className="mt-24">
           <p className="text-sm uppercase tracking-wide text-text-muted">Graphic Design</p>
-          <h2 className="font-home-display text-h2 mt-2 font-bold">Flyers, posters, campaigns and video</h2>
-          <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2">
-            {graphicProjects.map((item, i) => (
-              <Reveal key={item.id} delay={i * 100}>
-                <GraphicCard item={item} />
-              </Reveal>
-            ))}
+          <h2 className="font-home-display text-h2 mt-2 font-bold">Posters, magazines, videos and more</h2>
+          <div className="mt-8">
+            <GraphicCarousel />
           </div>
         </div>
       </Container>

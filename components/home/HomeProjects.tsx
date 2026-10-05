@@ -23,7 +23,7 @@ export function HomeProjects() {
         </div>
 
         <div className="mt-12 flex justify-center">
-          <PillButtonWithArrow href="/work" variant="outline">
+          <PillButtonWithArrow href="/portfolio" variant="outline">
             View All
           </PillButtonWithArrow>
         </div>

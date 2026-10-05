@@ -20,7 +20,7 @@ const slides: Slide[] = [
       id: p.id,
       title: p.title,
       tech: p.tech,
-      href: `/work/${p.id}`,
+      href: `/portfolio/${p.id}`,
       image: p.image?.card,
     })
   ),

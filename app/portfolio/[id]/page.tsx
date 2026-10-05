@@ -14,7 +14,7 @@ export function generateStaticParams() {
 }
 
 export async function generateMetadata(
-  props: PageProps<"/work/[id]">
+  props: PageProps<"/portfolio/[id]">
 ): Promise<Metadata> {
   const { id } = await props.params;
   const project = projects.find((p) => p.id === id);
@@ -25,7 +25,7 @@ export async function generateMetadata(
   };
 }
 
-export default async function ProjectPage(props: PageProps<"/work/[id]">) {
+export default async function ProjectPage(props: PageProps<"/portfolio/[id]">) {
   const { id } = await props.params;
   const index = projects.findIndex((p) => p.id === id);
   if (index === -1) notFound();
@@ -39,7 +39,7 @@ export default async function ProjectPage(props: PageProps<"/work/[id]">) {
         <Container>
           <Reveal>
             <Link
-              href="/work"
+              href="/portfolio"
               className="font-mono text-meta uppercase text-text-muted hover:text-text-primary transition-colors duration-300"
             >
               &#8592; All Work
@@ -129,7 +129,7 @@ export default async function ProjectPage(props: PageProps<"/work/[id]">) {
       <div className="border-t border-border">
         <Container>
           <Link
-            href={`/work/${next.id}`}
+            href={`/portfolio/${next.id}`}
             className="group flex items-center justify-between py-16"
           >
             <div>

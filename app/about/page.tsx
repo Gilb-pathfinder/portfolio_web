@@ -255,7 +255,7 @@ export default function AboutPage() {
                   {projects.map((p) => (
                     <Link
                       key={p.id}
-                      href={`/work/${p.id}`}
+                      href={`/portfolio/${p.id}`}
                       className="group rounded-xl border border-border p-5 transition-colors hover:border-accent"
                     >
                       <p className="text-xs uppercase tracking-wide text-text-muted">{p.category}</p>
@@ -271,7 +271,7 @@ export default function AboutPage() {
                 </div>
                 <div className="mt-6 text-center">
                   <Link
-                    href="/work"
+                    href="/portfolio"
                     className="inline-flex items-center justify-center rounded-full border border-border-strong px-6 py-2.5 text-sm font-medium text-text-primary transition-colors hover:border-accent"
                   >
                     View More
