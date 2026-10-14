@@ -143,8 +143,8 @@ export type Project = {
 
 export const projects: Project[] = [
   {
-    id: "cityride",
-    title: "CityRide",
+    id: "ndihano",
+    title: "Ndihano.app",
     category: "Mobile Application",
     group: "software",
     year: "2025",
@@ -152,13 +152,13 @@ export const projects: Project[] = [
     description:
       "A ride-hailing app that locates the nearest available rider from a user's current location in real time.",
     tech: ["React.js", "Next.js", "PostgreSQL", "Flutter", "UI/UX Design"],
-    links: { live: "https://cityride-five.vercel.app/" },
+    links: { live: "https://ndihano.app" },
     image: {
       card: "/images/projects/cityride_card.png",
       full: "/images/projects/cityride.png",
     },
     caseStudy: [
-      "CityRide solves a specific problem: finding a nearby moto rider without a round of calls. The app surfaces verified riders by live distance and rating and lets a client contact one directly, with no booking queue in between.",
+      "Ndihano.app solves a specific problem: finding a nearby moto rider without a round of calls. The app surfaces verified riders by live distance and rating and lets a client contact one directly, with no booking queue in between.",
       "The product splits into two flows that share the same underlying location and profile system — a Client side for discovering and calling nearby riders, and a Rider side where riders go through verification before they can go online and start receiving requests.",
       "Built with React.js and Next.js for the web experience and Flutter for the mobile app, with PostgreSQL handling rider, client and verification data.",
     ],
@@ -361,7 +361,7 @@ export const graphicProjects: GraphicItem[] = [
   {
     id: "poster-13",
     title: "Brand Campaign Poster",
-    description: "A campaign poster for Bugufi Digital, shown on an outdoor bus-stop display with a CityRide creative.",
+    description: "A campaign poster for Bugufi Digital, shown on an outdoor bus-stop display with a Ndihano.app creative.",
     tags: ["Print","Campaign"],
     category: "posters",
     media: { kind: "image", src: "/images/projects/graphic Design/posterr_mock1.jpg" },
