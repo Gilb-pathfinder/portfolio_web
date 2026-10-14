@@ -88,19 +88,19 @@ export const homeExpertise: HomeExpertiseItem[] = [
   {
     index: "01",
     title: "Software Development",
-    tagline: "A simple, results-driven process for bringing your vision to life.",
+    tagline: "From database to interface — full-stack applications built to hold up under real use, not just in a demo.",
     tools: ["JavaScript", "React.js", "Next.js", "Python", "AI Integration"],
   },
   {
     index: "02",
     title: "UI/UX Design",
-    tagline: "A simple, results-driven process for bringing your vision to life.",
+    tagline: "Interfaces designed around how people actually use them — clear flows, honest feedback, nothing wasted.",
     tools: ["Figma", "Canva", "Adobe XD"],
   },
   {
     index: "03",
     title: "Graphic Design",
-    tagline: "A simple, results-driven process for bringing your vision to life.",
+    tagline: "Visual identity that makes a brand recognisable at a glance — from a single poster to a full brand system.",
     tools: ["Photoshop", "Illustrator", "InDesign"],
   },
 ];
@@ -136,6 +136,9 @@ export type Project = {
   // (used on the project's own page). Projects without these fall back to
   // an abstract placeholder rather than a fake screenshot.
   image?: { card: string; full: string };
+  // case study paragraphs for the project's own page — grounded in the
+  // live product (or, where there's no live link, in the project itself).
+  caseStudy?: string[];
 };
 
 export const projects: Project[] = [
@@ -148,12 +151,17 @@ export const projects: Project[] = [
     role: "Software Developer",
     description:
       "A ride-hailing app that locates the nearest available rider from a user's current location in real time.",
-    tech: ["React.js", "Next.js", "PostgreSQL", "Flutter"],
+    tech: ["React.js", "Next.js", "PostgreSQL", "Flutter", "UI/UX Design"],
     links: { live: "https://cityride-five.vercel.app/" },
     image: {
       card: "/images/projects/cityride_card.png",
       full: "/images/projects/cityride.png",
     },
+    caseStudy: [
+      "CityRide solves a specific problem: finding a nearby moto rider without a round of calls. The app surfaces verified riders by live distance and rating and lets a client contact one directly, with no booking queue in between.",
+      "The product splits into two flows that share the same underlying location and profile system — a Client side for discovering and calling nearby riders, and a Rider side where riders go through verification before they can go online and start receiving requests.",
+      "Built with React.js and Next.js for the web experience and Flutter for the mobile app, with PostgreSQL handling rider, client and verification data.",
+    ],
   },
   {
     id: "bugufidigital",
@@ -164,12 +172,17 @@ export const projects: Project[] = [
     role: "Founder & Developer",
     description:
       "The website for Bugufi Digital, my own creative and software agency based in Kigali — built bilingual in English and French.",
-    tech: ["Next.js", "TypeScript", "Tailwind CSS"],
+    tech: ["Next.js", "TypeScript", "Tailwind CSS", "i18n (EN/FR)", "UI/UX Design"],
     links: { live: "https://bugufidigital.vercel.app" },
     image: {
       card: "/images/projects/bugufidigital_card.png",
       full: "/images/projects/bugufidigital.png",
     },
+    caseStudy: [
+      "Bugufi Digital is the site for my own agency — a creative and software studio based in Kigali offering web and software development, brand identity, UI/UX design, graphic design, social media management and marketing campaigns.",
+      "I built it bilingual from the ground up with a custom English/French locale system, and structured it around the services the agency actually offers: home, about, services, portfolio, team, blog, careers and contact.",
+      "Built on Next.js with TypeScript and Tailwind CSS — it's also the base the Bugufi Marketplace project below was later built from.",
+    ],
   },
   {
     id: "bugufi-marketplace",
@@ -180,12 +193,17 @@ export const projects: Project[] = [
     role: "Founder & Developer",
     description:
       "A digital marketplace connecting wholesalers, retailers and makers across Rwanda with buyers, built under Bugufi Digital.",
-    tech: ["Next.js", "TypeScript"],
+    tech: ["Next.js", "TypeScript", "Tailwind CSS", "UI/UX Design"],
     links: { live: "https://bugufi-three.vercel.app/" },
     image: {
       card: "/images/projects/bugufi_marketplace card.png",
       full: "/images/projects/bugufi marketplace.png",
     },
+    caseStudy: [
+      "Bugufi Marketplace is the e-commerce side of Bugufi Digital: wholesalers, retailers and independent makers across Rwanda list products directly to buyers, organised across departments from fashion and food to construction and agriculture.",
+      "Trust is built into the browsing experience — a seller carries a verified badge once the Bugufi team checks them by phone or in person, alongside their rating, reply time and delivered-order count, and buyers pay sellers directly rather than through an escrow step.",
+      "The catalogue supports search, favourites, cart and order tracking, with hot deals and new arrivals surfaced on the homepage, and the interface runs in English, French and Kinyarwanda. Built with Next.js and TypeScript, with the seller side designed so a new shop can go live in about ten minutes.",
+    ],
   },
   {
     id: "esano",
@@ -196,11 +214,16 @@ export const projects: Project[] = [
     role: "Software Developer",
     description:
       "A platform built for families to organise, explore and manage their family members and lineage.",
-    tech: ["React.js", "Next.js", "Firebase", "Vercel"],
+    tech: ["React.js", "Next.js", "Firebase", "Vercel", "UI/UX Design"],
     image: {
       card: "/images/projects/Esano Card.png",
       full: "/images/projects/Esano AI Geneology explorer.png",
     },
+    caseStudy: [
+      "Esano is a genealogy platform built for families to organise, explore and manage their family members and lineage — an AI-assisted explorer for navigating a family tree rather than a flat list of names.",
+      "Built with React and Next.js on the frontend, Firebase for data and authentication, and deployed on Vercel.",
+      "Esano doesn't have a public live link right now, so this page is shown through its own screenshots rather than a hosted demo.",
+    ],
   },
 ];
 

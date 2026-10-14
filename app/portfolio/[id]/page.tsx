@@ -85,7 +85,7 @@ export default async function ProjectPage(props: PageProps<"/portfolio/[id]">) {
                 {project.tech.map((t) => (
                   <li
                     key={t}
-                    className="border border-border px-3 py-1.5 font-mono text-meta uppercase text-text-secondary"
+                    className="rounded-full border border-border px-3 py-1.5 font-mono text-meta uppercase text-text-secondary"
                   >
                     {t}
                   </li>
@@ -94,15 +94,15 @@ export default async function ProjectPage(props: PageProps<"/portfolio/[id]">) {
             </Reveal>
 
             <Reveal delay={100}>
-              <div className="mt-12 border border-dashed border-border-strong p-8">
+              <div className="mt-12 rounded-2xl border border-border-strong p-8">
                 <p className="font-mono text-meta uppercase text-text-muted">
-                  Full case study
+                  Case study
                 </p>
-                <p className="mt-3 max-w-md text-text-secondary">
-                  A detailed write-up of the challenge, approach and technical
-                  implementation behind {project.title} is in progress and
-                  will be added here.
-                </p>
+                <div className="mt-3 flex max-w-md flex-col gap-4 text-text-secondary">
+                  {(project.caseStudy ?? [project.description]).map((paragraph, i) => (
+                    <p key={i}>{paragraph}</p>
+                  ))}
+                </div>
               </div>
             </Reveal>
 

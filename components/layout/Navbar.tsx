@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { nav, site } from "@/lib/content";
@@ -39,10 +40,11 @@ export function Navbar() {
           >
             <Link
               href="/"
-              className="text-lg font-semibold tracking-tight text-white"
+              className="flex items-center gap-2 text-lg font-semibold tracking-tight text-white"
               onClick={() => setOpen(false)}
             >
-              Gilbert Mugisha
+              <Image src="/images/name_logo.png" alt="" width={26} height={26} className="h-6 w-6 invert" />
+              Gilbert
             </Link>
 
             <div className="hidden md:flex items-center gap-10">
