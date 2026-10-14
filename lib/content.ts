@@ -154,8 +154,8 @@ export const projects: Project[] = [
     tech: ["React.js", "Next.js", "PostgreSQL", "Flutter", "UI/UX Design"],
     links: { live: "https://ndihano.app" },
     image: {
-      card: "/images/projects/cityride_card.png",
-      full: "/images/projects/cityride.png",
+      card: "/images/projects/ndihano_app_mockup.jpg",
+      full: "/images/projects/ndihano_app_mockup.jpg",
     },
     caseStudy: [
       "Ndihano.app solves a specific problem: finding a nearby moto rider without a round of calls. The app surfaces verified riders by live distance and rating and lets a client contact one directly, with no booking queue in between.",
@@ -175,8 +175,8 @@ export const projects: Project[] = [
     tech: ["Next.js", "TypeScript", "Tailwind CSS", "i18n (EN/FR)", "UI/UX Design"],
     links: { live: "https://bugufidigital.vercel.app" },
     image: {
-      card: "/images/projects/bugufidigital_card.png",
-      full: "/images/projects/bugufidigital.png",
+      card: "/images/projects/bugufidigital_mockup.jpg",
+      full: "/images/projects/bugufidigital_mockup.jpg",
     },
     caseStudy: [
       "Bugufi Digital is the site for my own agency — a creative and software studio based in Kigali offering web and software development, brand identity, UI/UX design, graphic design, social media management and marketing campaigns.",
@@ -196,8 +196,8 @@ export const projects: Project[] = [
     tech: ["Next.js", "TypeScript", "Tailwind CSS", "UI/UX Design"],
     links: { live: "https://bugufi-three.vercel.app/" },
     image: {
-      card: "/images/projects/bugufi_marketplace card.png",
-      full: "/images/projects/bugufi marketplace.png",
+      card: "/images/projects/bugufi marketplace_mockup.jpg",
+      full: "/images/projects/bugufi marketplace_mockup.jpg",
     },
     caseStudy: [
       "Bugufi Marketplace is the e-commerce side of Bugufi Digital: wholesalers, retailers and independent makers across Rwanda list products directly to buyers, organised across departments from fashion and food to construction and agriculture.",
@@ -216,13 +216,34 @@ export const projects: Project[] = [
       "A platform built for families to organise, explore and manage their family members and lineage.",
     tech: ["React.js", "Next.js", "Firebase", "Vercel", "UI/UX Design"],
     image: {
-      card: "/images/projects/Esano Card.png",
-      full: "/images/projects/Esano AI Geneology explorer.png",
+      card: "/images/projects/Esano_mockup.jpg",
+      full: "/images/projects/Esano_mockup.jpg",
     },
     caseStudy: [
       "Esano is a genealogy platform built for families to organise, explore and manage their family members and lineage — an AI-assisted explorer for navigating a family tree rather than a flat list of names.",
       "Built with React and Next.js on the frontend, Firebase for data and authentication, and deployed on Vercel.",
       "Esano doesn't have a public live link right now, so this page is shown through its own screenshots rather than a hosted demo.",
+    ],
+  },
+  {
+    id: "echurch",
+    title: "E-Church",
+    category: "Software / Web Application",
+    group: "software",
+    year: "2026",
+    role: "Software Developer",
+    description:
+      "A church management and information system built for ASA Tumba SDA Church, designed to serve Seventh-day Adventist churches across Rwanda.",
+    tech: ["Next.js", "TypeScript", "Tailwind CSS", "UI/UX Design"],
+    links: { live: "https://echurch.vercel.app" },
+    image: {
+      card: "/images/projects/e-church_mockup.jpg",
+      full: "/images/projects/e-church_mockup.jpg",
+    },
+    caseStudy: [
+      "E-Church is a church website and management system built for ASA Tumba SDA Church in Tumba, Rulindo — with the aim of serving other Seventh-day Adventist churches across Rwanda the same way.",
+      "It brings a congregation's public presence and its service schedule into one place: Sabbath School, Divine Service, Youth Meeting and Prayer Meeting times, Friday Vesper programs and other events, church updates and announcements, and the church's mission, vision and values — plus a member sign-in for the church's own side of things.",
+      "Built with Next.js, TypeScript and Tailwind CSS, with the interface running in both English and Kinyarwanda.",
     ],
   },
 ];
